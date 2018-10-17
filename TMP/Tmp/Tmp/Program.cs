@@ -12,7 +12,7 @@ namespace Tsp
         static void Main(string[] args)
         {
             Console.WriteLine("Generated Matrix is:");
-            CreateMatrix(15);
+            CreateMatrix(12);
             RunBruteForce();
             Console.ReadKey();
         }
@@ -32,7 +32,7 @@ namespace Tsp
             bruteforceSolver.solve(out path, out smallestCost);
            
             Console.WriteLine("Brute Force Done!");
-            Console.WriteLine("Most effective path is: " + String.Join(" ",path));
+            Console.WriteLine("Most effective path is: " + String.Join(" ",path)+" "+path[0].ToString());
             Console.WriteLine("It costs: " + smallestCost);
             return null;
         }
