@@ -9,7 +9,7 @@ namespace Tsp
 {
     class AdjacencyMatrix
     {
-        private int[,] matrix;
+        public int[,] matrix;
         public AdjacencyMatrix(int verticles)
         {
             matrix=new int[verticles,verticles];
