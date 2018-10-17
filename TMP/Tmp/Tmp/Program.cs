@@ -12,7 +12,7 @@ namespace Tsp
         static void Main(string[] args)
         {
             Console.WriteLine("Generated Matrix is:");
-            CreateMatrix(4);
+            CreateMatrix(17);
             RunBruteForce();
             Console.ReadKey();
         }

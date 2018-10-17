@@ -42,15 +42,21 @@ namespace Tsp
 
         public void permute(int[] path, int l, int r)
         {
-            if(l==r)
-                pathPermutationList.Add(path);
+            if (l == r)
+            {
+                int[] newPath = new int[path.Length];
+                Array.Copy(path,newPath,path.Length);
+                pathPermutationList.Add(newPath);
+
+            }
             else
+
             {
                 for (int i = l; i <= r; i++)
                 {
                     path=IntSwap(path, l, i);
                     permute(path,l+1,r);
-                    path=IntSwap(path, l, i);
+                        //   path=IntSwap(path, l, i);
                 }
             }
         }
@@ -64,7 +70,7 @@ namespace Tsp
             }
             permute(vertexArray, 0, vertexArray.Length-1);
             
-            printPerm();
+          //  printPerm();
             List <int> bestRoute= new List<int>();
             int[] tempBest=new int[vertexArray.Length];
             int smallestCost=Int32.MaxValue;
@@ -101,19 +107,15 @@ namespace Tsp
             int cost = 0;
             for (int i = 0; i < path.Length-1; i++)
             {
-                if (i != path.Length - 1)
-                {
-                   cost += adMatrix.matrix[0, path[i]-1];
-                }
+               
+                cost += adMatrix.matrix[ path[i + 1]-1,path[i] - 1];
 
-                //Console.Write(path[i] + "->" + path[i + 1] + "|");
-                
-                cost += adMatrix.matrix[path[i]-1, path[i + 1]-1];
-                
-                
+
             }
-            Console.WriteLine("total cost:" + cost);
-            
+
+            cost += adMatrix.matrix[path[path.Length-1]-1, path[0]-1];
+            // Console.WriteLine("total cost:" + cost);
+
             return cost;
         }
         
