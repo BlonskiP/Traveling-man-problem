@@ -1,7 +1,0 @@
-F:\c#\Traveling man problem\TSP\TSP\bin\Debug\TSP.exe.config
-F:\c#\Traveling man problem\TSP\TSP\bin\Debug\TSP.exe
-F:\c#\Traveling man problem\TSP\TSP\bin\Debug\TSP.pdb
-F:\c#\Traveling man problem\TSP\TSP\obj\Debug\TSP.csprojAssemblyReference.cache
-F:\c#\Traveling man problem\TSP\TSP\obj\Debug\TSP.csproj.CoreCompileInputs.cache
-F:\c#\Traveling man problem\TSP\TSP\obj\Debug\TSP.exe
-F:\c#\Traveling man problem\TSP\TSP\obj\Debug\TSP.pdb
