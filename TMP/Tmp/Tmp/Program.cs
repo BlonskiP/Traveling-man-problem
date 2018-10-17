@@ -13,6 +13,7 @@ namespace Tsp
         {
             Console.WriteLine("Generated Matrix is:");
             CreateMatrix(5);
+            RunBruteForce();
             Console.ReadKey();
         }
 
@@ -23,5 +24,11 @@ namespace Tsp
             _matrix.print();
         }
 
+        private static List<int> RunBruteForce()
+        {
+            TspBruteForce bruteforceSolver=new TspBruteForce(_matrix);
+            bruteforceSolver.printPerm();
+            return null;
+        }
     }
 }
