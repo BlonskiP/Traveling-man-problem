@@ -73,10 +73,11 @@ namespace Tsp
           //  printPerm();
             List <int> bestRoute= new List<int>();
             int[] tempBest=new int[vertexArray.Length];
-            int smallestCost=Int32.MaxValue;
+            int smallestCost = Int32.MaxValue;
+            int newCost;
             foreach (var array in pathPermutationList)
             {
-                int newCost = countCost(array);
+                 newCost = countCost(array);
                 if (newCost < smallestCost)
                 {
                     tempBest = array;
