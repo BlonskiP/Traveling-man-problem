@@ -56,9 +56,9 @@ namespace Tsp
         public void solve(out int[] path, out int cost)
         {
             int[] vertexArray = new int[adMatrix.matrix.GetLength(0)];
-            for (int i = 1; i <= vertexArray.Length; i++)
+            for (int i = 0; i < vertexArray.Length; i++)
             {
-                vertexArray[i - 1] = i;
+                vertexArray[i] = i;
             }
             permute(vertexArray, 0, vertexArray.Length-1);
 
@@ -89,12 +89,12 @@ namespace Tsp
             for (int i = 0; i < path.Length-1; i++)
             {
                
-                cost += adMatrix.matrix[ path[i + 1]-1,path[i] - 1];
+                cost += adMatrix.matrix[ path[i + 1],path[i]];
 
 
             }
 
-            cost += adMatrix.matrix[path[path.Length-1]-1, path[0]-1];
+            cost += adMatrix.matrix[path[0],path[path.Length-1]];
             // Console.WriteLine("total cost:" + cost);
 
             return cost;
