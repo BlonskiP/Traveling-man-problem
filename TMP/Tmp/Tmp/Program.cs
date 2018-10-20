@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tmp;
 
 namespace Tsp
 {
@@ -12,9 +13,16 @@ namespace Tsp
         static void Main(string[] args)
         {
             Console.WriteLine("Generated Matrix is:");
-            CreateMatrix(12);
-            RunBruteForce();
+            CreateMatrix(3);
+            //RunBruteForce();
+            RunDynamic();
             Console.ReadKey();
+        }
+
+        private static void RunDynamic()
+        {
+            DynamicTSP dynamic=new DynamicTSP(_matrix, 0);
+            dynamic.Solve();
         }
 
         private static void CreateMatrix(int verticles)
