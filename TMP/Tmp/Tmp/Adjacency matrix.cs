@@ -43,6 +43,15 @@ namespace Tsp
             }
         }
 
+        public void setTestMatrix()
+        {
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int k = 0; k < matrix.GetLength(1); k++)
+                    matrix[i, k] = i+1;
+            }
+            correctPaths();
+        }
         
     }
 }

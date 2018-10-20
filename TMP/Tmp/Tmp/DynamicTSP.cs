@@ -14,6 +14,8 @@ namespace Tmp
         private AdjacencyMatrix costMatrix;
         private Int32 END_STATE;
         private int startingNode;
+        private List<int> tour=new List<int>();
+        public double minTourCost = Double.PositiveInfinity;
         public DynamicTSP(AdjacencyMatrix givenMatrix, int startingNode)
         {
             costMatrix = givenMatrix;
@@ -22,6 +24,7 @@ namespace Tmp
             memo = new double[vertexNumber,nSquare];
             END_STATE = (1 << vertexNumber) - 1; //binary end state 
             this.startingNode = startingNode;
+            
         }
 
        
@@ -34,7 +37,7 @@ namespace Tmp
                 k = ((1 << startingNode) | (1 << i));
                 memo[i,k] = costMatrix.matrix[startingNode,i];
             }
-            printMemo();
+            
         }
 
         public void printMemo()
@@ -110,11 +113,56 @@ namespace Tmp
 
                 }
             //Conect tour back
-
-           
-
+            for (int i = 0; i < vertexNumber; i++)
+            {
+                if(i==startingNode)continue;
+                double tourCost = memo[i, END_STATE] + costMatrix.matrix[i, startingNode];
+                if (tourCost < minTourCost)
+                {
+                    minTourCost = tourCost;
+                }
             }
+
+            int lastIndex = startingNode;
+            int state = END_STATE;
+            tour.Add(startingNode);
+
+            //reconstrucion
+            for (int i = 1; i < vertexNumber; i++)
+            {
+                int index = -1;
+                for (int j = 0; j < vertexNumber; j++)
+                {
+                    if(j==startingNode || notIn(j,state)) continue;
+                    if (index == -1) index = j;
+                    double prevDist = memo[index, state] + costMatrix.matrix[index, lastIndex];
+                    double newDist = memo[j, state] + costMatrix.matrix[j, lastIndex];
+                    if (newDist < prevDist)
+                    {
+                        index = j;}
+                }
+                tour.Add(index);
+                state = state ^ (1 << index);
+                lastIndex = index;
+            }
+            tour.Add(startingNode);
+            tour.Reverse();
+
+            
+
+
+
         }
+
+        public void printTour()
+        {   
+            foreach (var vertex in tour)
+            {
+                Console.Write(vertex+"->");
+            }
+            
+        }
+    }
 
       
     }
