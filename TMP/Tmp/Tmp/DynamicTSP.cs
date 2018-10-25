@@ -7,11 +7,11 @@ using Tsp;
 
 namespace Tmp
 {
-    class DynamicTSP
+    class DynamicTSP : TspSolver
     {
         private double[,] memo;
         private int vertexNumber;
-        private AdjacencyMatrix costMatrix;
+       
         private Int32 END_STATE;
         private int startingNode;
         private List<int> tour=new List<int>();
@@ -27,8 +27,20 @@ namespace Tmp
             
         }
 
-       
+        public DynamicTSP()
+        {
+            this.startingNode = 0;
+        }
 
+        public void setVariables(AdjacencyMatrix givenMatrix)
+        {
+            costMatrix = givenMatrix;
+            vertexNumber = costMatrix.matrix.GetLength(0);
+            int nSquare = (int)Math.Pow(2, vertexNumber);
+            memo = new double[vertexNumber, nSquare];
+            END_STATE = (1 << vertexNumber) - 1; //binary end state 
+
+        }
         private void setup()
         {
             for (int i = 0, k=0; i < vertexNumber; i++)
@@ -78,6 +90,7 @@ namespace Tmp
         {
             return ((1 << element) & subset) == 0;
         }
+        override 
         public void Solve()
         {
             setup();

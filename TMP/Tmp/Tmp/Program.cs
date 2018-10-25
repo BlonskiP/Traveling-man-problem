@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,17 +10,16 @@ namespace Tsp
 {
     class Program
     {
+        static private ExcelManager excel;
         static  AdjacencyMatrix _matrix;
         static void Main(string[] args)
         {
+            Console.ReadKey();
+            runMeasures();
             Console.WriteLine("Generated Matrix is:");
-           CreateMatrix(3);
-           // CreateTestMatrix(3);
-          
-          //  RunBruteForce();
-            //RunDynamic();
-           if(runTest())Console.WriteLine("Dziala");
-            else Console.WriteLine("Dupa");
+            CreateMatrix(10);
+            
+            
             Console.ReadKey();
         }
 
@@ -27,6 +27,7 @@ namespace Tsp
         {
             
                 DynamicTSP dynamic = new DynamicTSP(_matrix, 0);
+                
                 dynamic.Solve();
                 Console.WriteLine("Dynamic Done!");
                 Console.WriteLine("Most effective path is: ");
@@ -51,33 +52,62 @@ namespace Tsp
 
         private static List<int> RunBruteForce()
         {
-            TspBruteForce bruteforceSolver=new TspBruteForce(_matrix);
-            int[] path;
-            int smallestCost;
-            bruteforceSolver.solve(out path, out smallestCost);
+            TspBruteForce bruteforceSolver = new TspBruteForce(_matrix);
+            bruteforceSolver.Solve();
            
             Console.WriteLine("Brute Force Done!");
-            Console.WriteLine("Most effective path is: " + String.Join(" ",path)+" "+path[0].ToString());
-            Console.WriteLine("It costs: " + smallestCost);
+            Console.WriteLine("Most effective path is: " + bruteforceSolver.bestPath.ToString());
+            Console.WriteLine("It costs: " + bruteforceSolver.smallestCost);
             return null;
         }
 
-        private static bool runTest()
-        {
-            int[] output;
-            int cost2;
-            for (int i = 0; i < 10000; i++)
-            {
-                AdjacencyMatrix testMatrix = new AdjacencyMatrix(5);
-                DynamicTSP testObject = new DynamicTSP(testMatrix, 0);
-                TspBruteForce testObject2 = new TspBruteForce(testMatrix);
-                testObject2.solve(out output, out cost2);
-                testObject.Solve();
-                if (cost2 != testObject.minTourCost)
-                    return false;
-            }
+        
 
-            return true;
+        public static void stopWatchTest()
+        {
+            Stopwatch watch=new Stopwatch();
+            watch.Start();
+            RunDynamic();
+          
+            watch.Stop();
+            Console.WriteLine("Time: "+watch.Elapsed);
+            Console.WriteLine("mili " + watch.ElapsedMilliseconds);
+            Console.WriteLine("ticks " + watch.ElapsedTicks);
+            Console.WriteLine("sec? " + watch.ElapsedTicks/Stopwatch.Frequency);
+
+            
         }
+
+        static void testfunction()
+        {
+            int verticles = 15;
+            _matrix=new AdjacencyMatrix(verticles);
+            timeCounter timemaster=new timeCounter(100);
+            DynamicTSP tester=new DynamicTSP(_matrix,0);
+            TspBruteForce brute=new TspBruteForce(_matrix);
+            timemaster.measureSolver(tester, verticles);
+            timemaster.measureSolver(brute, verticles);
+
+        }
+
+        static public void runMeasures()
+        {
+            int verticles = 15;
+            DynamicTSP tester = new DynamicTSP();
+            TspBruteForce brute = new TspBruteForce();
+            timeCounter timemaster = new timeCounter(2);
+            excel = new ExcelManager("pomiar");
+            excel.createNewFile();
+            excel.changeCell(2,2, timemaster.measureSolver(brute, 5).ToString());
+            excel.changeCell(2, 3, timemaster.measureSolver(brute, 8).ToString());
+            excel.changeCell(2, 4, timemaster.measureSolver(brute, 10).ToString());
+            //excel.changeCell(2, 5, timemaster.measureSolver(brute, 12).ToString());
+            //excel.changeCell(2, 6, timemaster.measureSolver(brute, 14).ToString());
+            //excel.changeCell(2, 7, timemaster.measureSolver(brute, 16).ToString());
+            
+            
+        }
+        
+        
     }
 }

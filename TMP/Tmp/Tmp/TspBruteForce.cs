@@ -5,16 +5,18 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Tmp;
 
 namespace Tsp
 {
 
-    class TspBruteForce
+    class TspBruteForce : TspSolver
     {
         
         AdjacencyMatrix adMatrix;
-        private int smallestCost;
-        private int[] bestPath;
+        
+        public int smallestCost;
+        public int[] bestPath;
         public TspBruteForce(AdjacencyMatrix matrix)
         {
             adMatrix = matrix;
@@ -23,8 +25,15 @@ namespace Tsp
 
         }
 
-        
+        public TspBruteForce()
+        {
+            smallestCost = Int32.MaxValue;
+        }
 
+        public void SetVariables(AdjacencyMatrix matrix)
+        {
+            adMatrix = matrix;
+        }
         public void permute(int[] path, int l, int r)
         {
             if (l == r)
@@ -52,8 +61,8 @@ namespace Tsp
                 }
             }
         }
-
-        public void solve(out int[] path, out int cost)
+        override 
+        public void Solve()
         {
             int[] vertexArray = new int[adMatrix.matrix.GetLength(0)];
             for (int i = 0; i < vertexArray.Length; i++)
@@ -62,9 +71,7 @@ namespace Tsp
             }
             permute(vertexArray, 0, vertexArray.Length-1);
 
-            path = this.bestPath;
-            cost = this.smallestCost;
-
+           
 
 
 
