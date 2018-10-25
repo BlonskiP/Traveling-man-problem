@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tsp;
 
-namespace Tmp
+
+namespace Traveling_salesman_problem
 {
     class timeCounter
     {

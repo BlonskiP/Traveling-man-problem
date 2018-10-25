@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tsp;
 
-namespace Tmp
+
+namespace Traveling_salesman_problem
 {
     class DynamicTSP : TspSolver
     {
@@ -14,7 +14,7 @@ namespace Tmp
        
         private Int32 END_STATE;
         private int startingNode;
-        private List<int> tour=new List<int>();
+        public List<int> tour=new List<int>();
         public double minTourCost = Double.PositiveInfinity;
         public DynamicTSP(AdjacencyMatrix givenMatrix, int startingNode)
         {

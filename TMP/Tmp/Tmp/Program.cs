@@ -10,7 +10,7 @@ namespace Tsp
 {
     class Program
     {
-        static private ExcelManager excel;
+        private static ExcelManager excel;
         static  AdjacencyMatrix _matrix;
         static void Main(string[] args)
         {
@@ -90,18 +90,18 @@ namespace Tsp
 
         }
 
-        static public void runMeasures()
+        public static void runMeasures()
         {
             int verticles = 15;
             DynamicTSP tester = new DynamicTSP();
             TspBruteForce brute = new TspBruteForce();
             timeCounter timemaster = new timeCounter(2);
-            excel = new ExcelManager("pomiar");
+            excel = new ExcelManager("pomiary");
             excel.createNewFile();
-            excel.changeCell(2,2, timemaster.measureSolver(brute, 5).ToString());
-            excel.changeCell(2, 3, timemaster.measureSolver(brute, 8).ToString());
-            excel.changeCell(2, 4, timemaster.measureSolver(brute, 10).ToString());
-            //excel.changeCell(2, 5, timemaster.measureSolver(brute, 12).ToString());
+            excel.changeCell(2,2, timemaster.measureSolver(tester, 16).ToString());
+            excel.changeCell(3,2, timemaster.measureSolver(tester, 15).ToString());
+            excel.changeCell(4,2, timemaster.measureSolver(tester, 17).ToString());
+            excel.changeCell(5,2, timemaster.measureSolver(tester,18).ToString());
             //excel.changeCell(2, 6, timemaster.measureSolver(brute, 14).ToString());
             //excel.changeCell(2, 7, timemaster.measureSolver(brute, 16).ToString());
             

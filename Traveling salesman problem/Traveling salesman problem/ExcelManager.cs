@@ -8,7 +8,7 @@ using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop;
 using System.Runtime.InteropServices;
 
-namespace Tmp
+namespace Traveling_salesman_problem
 {
     class ExcelManager
     {

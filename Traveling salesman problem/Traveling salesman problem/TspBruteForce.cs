@@ -5,9 +5,9 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using Tmp;
 
-namespace Tsp
+
+namespace Traveling_salesman_problem
 {
 
     class TspBruteForce : TspSolver

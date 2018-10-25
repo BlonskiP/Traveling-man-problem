@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tsp;
+using Traveling_salesman_problem;
 
-namespace Tmp
+namespace Traveling_salesman_problem
 {
     abstract class TspSolver
     {
