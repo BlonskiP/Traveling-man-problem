@@ -24,7 +24,9 @@ namespace Traveling_salesman_problem
         }
         public static void RunDynamic()
         {
-            timeCounter=new Stopwatch();
+            isSolving = true;
+            path = new List<int>();
+            timeCounter =new Stopwatch();
             isSolving = true;
             timeCounter.Start();
             DynamicTSP dynamic = new DynamicTSP(_matrix, 0);
@@ -38,6 +40,27 @@ namespace Traveling_salesman_problem
 
         }
 
+        public static void RunBranchBound()
+        {
+            isSolving = true;
+            path = new List<int>();
+            timeCounter = new Stopwatch();
+            isSolving = true;
+            timeCounter.Start();
+            BranchAndBound brancher = new BranchAndBound();
+            brancher.SetVariables(_matrix);
+            brancher.Solve();
+            timeCounter.Stop();
+            foreach (var element in brancher.finalPath)
+            {
+                path.Add(element);
+            }
+
+           
+
+            cost = brancher.max;
+            isSolving = false;
+        }
         private static void CreateMatrix(int verticles)
         {
             _matrix = new AdjacencyMatrix(verticles);
@@ -53,8 +76,9 @@ namespace Traveling_salesman_problem
 
         public static void RunBruteForce()
         {
-            timeCounter = new Stopwatch();
             isSolving = true;
+            timeCounter = new Stopwatch();
+          
             path=new List<int>();
             timeCounter.Start();
             TspBruteForce bruteForceSolver = new TspBruteForce(_matrix);
@@ -101,21 +125,50 @@ namespace Traveling_salesman_problem
 
         public static void runMeasures()
         {
-            int verticles = 15;
-            DynamicTSP tester = new DynamicTSP();
+           
+            DynamicTSP dynamic = new DynamicTSP();
             TspBruteForce brute = new TspBruteForce();
-            timeCounter timemaster = new timeCounter(2);
+            BranchAndBound branch = new BranchAndBound();
+            timeCounter timemaster = new timeCounter(100);
             excel = new ExcelManager("pomiary");
             excel.createNewFile();
-            excel.changeCell(2, 2, timemaster.measureSolver(tester, 16).ToString());
-            excel.changeCell(3, 2, timemaster.measureSolver(tester, 15).ToString());
-            excel.changeCell(4, 2, timemaster.measureSolver(tester, 17).ToString());
-            excel.changeCell(5, 2, timemaster.measureSolver(tester, 18).ToString());
-            //excel.changeCell(2, 6, timemaster.measureSolver(brute, 14).ToString());
-            //excel.changeCell(2, 7, timemaster.measureSolver(brute, 16).ToString());
-
-
+            //Dynamic
+            excel.changeCell(2, 3, timemaster.measureSolver(dynamic, 4).ToString());
+            excel.changeCell(3, 3, timemaster.measureSolver(dynamic, 5).ToString());
+            excel.changeCell(4, 3, timemaster.measureSolver(dynamic, 6).ToString());
+            excel.changeCell(5, 3, timemaster.measureSolver(dynamic, 7).ToString());
+            excel.changeCell(6, 3, timemaster.measureSolver(dynamic, 8).ToString());
+            excel.changeCell(7, 3, timemaster.measureSolver(dynamic, 9).ToString());
+            excel.changeCell(8, 3, timemaster.measureSolver(dynamic, 10).ToString());
+            excel.changeCell(9, 3, timemaster.measureSolver(dynamic, 11).ToString());
+            Console.WriteLine("Dynamic END");
+            // BruteForce
+            excel.changeCell(2, 2, timemaster.measureSolver(brute, 4).ToString());
+            excel.changeCell(3, 2, timemaster.measureSolver(brute, 5).ToString());
+            excel.changeCell(4, 2, timemaster.measureSolver(brute, 6).ToString());
+            excel.changeCell(5, 2, timemaster.measureSolver(brute, 7).ToString());
+            excel.changeCell(6, 2, timemaster.measureSolver(brute, 8).ToString());
+            excel.changeCell(7, 2, timemaster.measureSolver(brute, 9).ToString());
+            excel.changeCell(8, 2, timemaster.measureSolver(brute, 10).ToString());
+            excel.changeCell(9, 2, timemaster.measureSolver(brute, 11).ToString());
+            Console.WriteLine("BruteForce done");
+           // Branch & bound
+            excel.changeCell(2, 4, timemaster.measureSolver(branch, 4).ToString());
+            excel.changeCell(3, 4, timemaster.measureSolver(branch, 5).ToString());
+            excel.changeCell(4, 4, timemaster.measureSolver(branch, 6).ToString());
+            excel.changeCell(5, 4, timemaster.measureSolver(branch, 7).ToString());
+            excel.changeCell(6, 4, timemaster.measureSolver(branch, 8).ToString());
+            excel.changeCell(7, 4, timemaster.measureSolver(branch, 9).ToString());
+            excel.changeCell(8, 4, timemaster.measureSolver(branch, 10).ToString());
+            excel.changeCell(9, 4, timemaster.measureSolver(branch, 11).ToString());
+            Console.WriteLine("Branch&Bound done");
+            excel.close();
         }
 
+        public static void CreateMatrixFromFile(string fileName)
+        {
+            
+            _matrix = new AdjacencyMatrix(fileName);
+        }
     }
 }

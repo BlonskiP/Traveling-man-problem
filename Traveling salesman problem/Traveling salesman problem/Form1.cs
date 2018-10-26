@@ -12,7 +12,8 @@ namespace Traveling_salesman_problem
 {
     public partial class Form1 : Form
     {
-        
+        private string fileName;
+        private OpenFileDialog ofd=new OpenFileDialog();
         public Form1()
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace Traveling_salesman_problem
                             break;
                         }
                         case 2:
-                        {//TO DO
+                        {   Manager.RunBranchBound();
                             break;
                         }
 
@@ -78,11 +79,18 @@ namespace Traveling_salesman_problem
 
         private void RunCalc_Btn_Click(object sender, EventArgs e)
         {
-
+            Manager.runMeasures();
         }
 
         private void UploadFile_btn_Click(object sender, EventArgs e)
         {
+            ofd.Filter = "txt| *.txt";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                fileName = ofd.FileName;
+            }
+
+            Manager.CreateMatrixFromFile(fileName);
 
         }
 
@@ -91,6 +99,7 @@ namespace Traveling_salesman_problem
             if(Manager._matrix!=null)
             {
                 Manager._matrix.print();
+                Console.WriteLine("");
             }
         }
 

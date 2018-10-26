@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adjacency matrix.cs" />
+    <Compile Include="BranchAndBound.cs" />
     <Compile Include="DynamicTSP.cs" />
     <Compile Include="ExcelManager.cs" />
     <Compile Include="Form1.cs">

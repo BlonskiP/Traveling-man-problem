@@ -39,6 +39,8 @@ namespace Traveling_salesman_problem
             int nSquare = (int)Math.Pow(2, vertexNumber);
             memo = new double[vertexNumber, nSquare];
             END_STATE = (1 << vertexNumber) - 1; //binary end state 
+            tour = new List<int>();
+            minTourCost = Double.PositiveInfinity;
 
         }
         private void setup()

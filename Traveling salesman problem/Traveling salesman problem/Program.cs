@@ -11,7 +11,7 @@ namespace Traveling_salesman_problem
 {
     class Program
     {
-        
+        [STAThread]
         static void Main(string[] args)
         {
             Application.EnableVisualStyles();

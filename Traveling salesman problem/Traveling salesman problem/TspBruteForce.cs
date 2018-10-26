@@ -33,6 +33,7 @@ namespace Traveling_salesman_problem
         public override void SetVariables(AdjacencyMatrix matrix)
         {
             adMatrix = matrix;
+       
         }
         public void permute(int[] path, int l, int r)
         {

@@ -7,13 +7,14 @@ using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Traveling_salesman_problem
 {
     class ExcelManager
     {
         ~ExcelManager(){
-           close();
+         
         }
         public ExcelManager(string filename)
         {
@@ -23,7 +24,7 @@ namespace Traveling_salesman_problem
 
         private string location;
         private string filename;
-        public Application ExcelApp;
+        public Excel.Application ExcelApp;
         public Workbook workbook;
         public Worksheet workSheet;
         public object misValue = System.Reflection.Missing.Value;
@@ -40,9 +41,16 @@ namespace Traveling_salesman_problem
             workbook = ExcelApp.Workbooks.Add(misValue);
             workSheet = (Worksheet) workbook.Worksheets.get_Item(1);
             setup(workSheet);
-
-            workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory+filename+".xls" ,XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            
+            try
+            {
+                workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + filename + ".xls",
+                    XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue,
+                    Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Zamknij Plik excel / brak dostepu do pliku ");
+            }
 
 
         }
@@ -55,14 +63,14 @@ namespace Traveling_salesman_problem
             workSheet.Cells[1, 2] = "Brute Force";
             workSheet.Cells[1, 3] = "DynamicProgrammin";
             workSheet.Cells[1, 4] = "B&B";
-            workSheet.Cells[2, 1] = "5";
-            workSheet.Cells[3, 1] = "8";
-            workSheet.Cells[4, 1] = "10";
-            workSheet.Cells[5, 1] = "12";
-            workSheet.Cells[6, 1] = "14";
-            workSheet.Cells[7, 1] = "16";
-
-
+            workSheet.Cells[2, 1] = "4";
+            workSheet.Cells[3, 1] = "5";
+            workSheet.Cells[4, 1] = "6";
+            workSheet.Cells[5, 1] = "7";
+            workSheet.Cells[6, 1] = "8";
+            workSheet.Cells[7, 1] = "9";
+            workSheet.Cells[8, 1] = "10";
+            workSheet.Cells[9, 1] = "11";
         }
 
         public void open() {
@@ -80,7 +88,8 @@ namespace Traveling_salesman_problem
         }
         public void changeCell(int x, int y, string change)
         {
-            workSheet.Cells[x, y] = change.ToString();
+            workSheet.Cells[x, y] = change.Replace(',', '0');
+
         }
     }
 }
