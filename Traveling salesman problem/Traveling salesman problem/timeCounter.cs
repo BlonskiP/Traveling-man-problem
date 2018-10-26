@@ -10,10 +10,10 @@ namespace Traveling_salesman_problem
 {
     class timeCounter
     {
-        private double[] measureTab;
+        private TimeSpan[] measureTab;
         public timeCounter(int measuresCount)
         {
-            measureTab = new double[measuresCount];
+            measureTab = new TimeSpan[measuresCount];
         }
 
         public double measureSolver(TspSolver tsp,int verticles)
@@ -30,13 +30,13 @@ namespace Traveling_salesman_problem
                 watch.Stop();
                 Console.WriteLine(watch.Elapsed);
 
-                measureTab[i] = watch.ElapsedMilliseconds;
+                measureTab[i] = watch.Elapsed;
 
 
 
             }
           //  showMeasures();
-            return Math.Round(countEndValue(), 5);
+            return countEndValue();
 
         }
 
@@ -50,12 +50,15 @@ namespace Traveling_salesman_problem
 
         private double countEndValue()
         {
-            double endValue = 0;
+            TimeSpan endValue = new TimeSpan();
+
             foreach (var measure in measureTab)
             {
-                Math.Round(endValue += measure,5);
+                endValue += measure;
             }
-            return endValue/measureTab.Length;
+            double result= (double)endValue.Ticks / measureTab.Length;
+            Console.WriteLine("Result:" +result);
+            return result;
         }
     }
 }

@@ -88,7 +88,7 @@ namespace Traveling_salesman_problem
         }
         public void changeCell(int x, int y, string change)
         {
-            workSheet.Cells[x, y] = change.Replace(',', '0');
+            workSheet.Cells[x, y] = Double.Parse(change);
 
         }
     }
