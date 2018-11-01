@@ -34,7 +34,7 @@ namespace Traveling_salesman_problem
         public override void Solve()
         {
             
-            int curr_bound = 0;
+            float curr_bound = 0;
             int[] currentPath=new int[size+1];
             for (int i = 0; i < currentPath.Length; i++)
             {
@@ -44,8 +44,8 @@ namespace Traveling_salesman_problem
            
             for (int i = 0; i <size ; i++)
                 curr_bound += (firstMin(i) + secondMin(i));
-            
-            curr_bound = ((curr_bound & 1) !=0) ? curr_bound / 2 + 1 : curr_bound / 2;
+
+            curr_bound = curr_bound / 2;
            
             visited[0] = true;
             currentPath[0] = 0;
@@ -53,10 +53,10 @@ namespace Traveling_salesman_problem
 
         }
 
-        private void TSPRec(int curr_bound, int weight, int level, int[] currentPath)
+        private void TSPRec(float curr_bound, int weight, int level, int[] currentPath)
         {
            
-            if (level == size)
+            if (level == size) //check if it is a leaf
             {
                 if (matrix.matrix[currentPath[level - 1], currentPath[0]] != 0)
                 {
@@ -72,20 +72,17 @@ namespace Traveling_salesman_problem
 
             for (int i = 0; i < size; i++)
             {
+                
                 if (matrix.matrix[currentPath[level - 1], i] != 0 && visited[i] == false)
                 {
-                    int temp = curr_bound;
+                    float temp = curr_bound;
                     weight += matrix.matrix[currentPath[level - 1], i];
-                    if (level == 1)
-                    {
-                        curr_bound -= ((firstMin(currentPath[level - 1]) + firstMin(i)) / 2);
-                    }
-                    else
-                    {
-                        curr_bound -= ((secondMin(currentPath[level - 1]) + firstMin(i)) / 2);
-                    }
+                    
+                    curr_bound -= calcBound(level - 1, i, level);
 
-                    if (curr_bound + weight < max)
+                   
+
+                    if (curr_bound + weight <= max)
                     {
                         currentPath[level] = i;
                         visited[i] = true;
@@ -122,6 +119,21 @@ namespace Traveling_salesman_problem
             return min;
         }
 
+        private float calcBound(int v1, int v2, int level)
+        {
+            int x, y;
+            if (level == 1)
+            {
+                x = firstMin(v1);
+                y = firstMin(v2);
+            }
+            else
+            {
+                x = secondMin(v1);
+                y = firstMin(v2);
+            }
+            return (x + y)/2;
+        }
         private int secondMin(int x)
         {
             int first = Int32.MaxValue, second = Int32.MaxValue;

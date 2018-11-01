@@ -143,14 +143,14 @@ namespace Traveling_salesman_problem
             excel.changeCell(9, 3, timemaster.measureSolver(dynamic, 11).ToString());
             Console.WriteLine("Dynamic END");
             // BruteForce
-            excel.changeCell(2, 2, timemaster.measureSolver(brute, 4).ToString());
-            excel.changeCell(3, 2, timemaster.measureSolver(brute, 5).ToString());
-            excel.changeCell(4, 2, timemaster.measureSolver(brute, 6).ToString());
-            excel.changeCell(5, 2, timemaster.measureSolver(brute, 7).ToString());
-            excel.changeCell(6, 2, timemaster.measureSolver(brute, 8).ToString());
-            excel.changeCell(7, 2, timemaster.measureSolver(brute, 9).ToString());
-            excel.changeCell(8, 2, timemaster.measureSolver(brute, 10).ToString());
-            excel.changeCell(9, 2, timemaster.measureSolver(brute, 11).ToString());
+            //excel.changeCell(2, 2, timemaster.measureSolver(brute, 4).ToString());
+            //excel.changeCell(3, 2, timemaster.measureSolver(brute, 5).ToString());
+            //excel.changeCell(4, 2, timemaster.measureSolver(brute, 6).ToString());
+            //excel.changeCell(5, 2, timemaster.measureSolver(brute, 7).ToString());
+            //excel.changeCell(6, 2, timemaster.measureSolver(brute, 8).ToString());
+            //excel.changeCell(7, 2, timemaster.measureSolver(brute, 9).ToString());
+            //excel.changeCell(8, 2, timemaster.measureSolver(brute, 10).ToString());
+            //excel.changeCell(9, 2, timemaster.measureSolver(brute, 11).ToString());
             Console.WriteLine("BruteForce done");
            // Branch & bound
             excel.changeCell(2, 4, timemaster.measureSolver(branch, 4).ToString());
