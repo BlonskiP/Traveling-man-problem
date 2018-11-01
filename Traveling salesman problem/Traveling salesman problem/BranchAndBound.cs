@@ -46,11 +46,9 @@ namespace Traveling_salesman_problem
            
             for (int i = 0; i <size ; i++)
                 curr_bound += (firstMin(i) + secondMin(i));
-            if ((curr_bound % 2) == 1)
-                firstBound = (curr_bound - 1) / 2;
-            else firstBound = curr_bound / 2;
-            curr_bound = curr_bound / 2;
-           // firstBound = (int)curr_bound;
+            
+            curr_bound = ((curr_bound) - size)/2;
+            firstBound = (int)curr_bound;
           
             visited[0] = true;
             currentPath[0] = 0;
