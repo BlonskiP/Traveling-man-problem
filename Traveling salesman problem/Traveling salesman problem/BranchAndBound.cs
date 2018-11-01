@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Traveling_salesman_problem
 {
-    class BranchAndBound : TspSolver
+    public class BranchAndBound : TspSolver
     {
         private int size;
         public AdjacencyMatrix matrix;
         public List<int> bestpath;
         public int cost;
         private bool[] visited;
+        public float firstBound;
         public int[] finalPath;
         public int max=Int32.MaxValue;
         public BranchAndBound()
@@ -28,15 +29,16 @@ namespace Traveling_salesman_problem
             this.matrix = matrix;
             size = matrix.matrix.GetLength(0);
             finalPath=new int[size+1];
-            visited = new bool[size+1];
+            visited = new bool[size];
         }
 
         public override void Solve()
         {
             
-            float curr_bound = 0;
+            float curr_bound = 0; // lower limit
             int[] currentPath=new int[size+1];
-            for (int i = 0; i < currentPath.Length; i++)
+            currentPath[size] = -1;
+            for (int i = 0; i < currentPath.Length-1; i++)
             {
                 currentPath[i] = -1;
                 visited[i] = false;
@@ -44,9 +46,12 @@ namespace Traveling_salesman_problem
            
             for (int i = 0; i <size ; i++)
                 curr_bound += (firstMin(i) + secondMin(i));
-
+            if ((curr_bound % 2) == 1)
+                firstBound = (curr_bound - 1) / 2;
+            else firstBound = curr_bound / 2;
             curr_bound = curr_bound / 2;
-           
+           // firstBound = (int)curr_bound;
+          
             visited[0] = true;
             currentPath[0] = 0;
             TSPRec(curr_bound, 0, 1, currentPath);
@@ -77,12 +82,12 @@ namespace Traveling_salesman_problem
                 {
                     float temp = curr_bound;
                     weight += matrix.matrix[currentPath[level - 1], i];
-                    
+
                     curr_bound -= calcBound(level - 1, i, level);
 
                    
 
-                    if (curr_bound + weight <= max)
+                    if (weight + curr_bound <= max) // Check if vertex is promising
                     {
                         currentPath[level] = i;
                         visited[i] = true;
@@ -92,8 +97,7 @@ namespace Traveling_salesman_problem
                     weight -= matrix.matrix[currentPath[level - 1], i];
                    
                     curr_bound = temp;
-                    for (int j = 0; j < size; j++)
-                        visited[i] = false;
+                    visited[i] = false;
                     for (int j = 0; j < level-1; j++)
                         visited[currentPath[j]] = true;
 
@@ -119,20 +123,17 @@ namespace Traveling_salesman_problem
             return min;
         }
 
-        private float calcBound(int v1, int v2, int level)
+        private float calcBound(int v1, int v2, int level)// v1 - last verticle v2- going to vertice
         {
             int x, y;
-            if (level == 1)
-            {
-                x = firstMin(v1);
-                y = firstMin(v2);
-            }
-            else
-            {
-                x = secondMin(v1);
-                y = firstMin(v2);
-            }
-            return (x + y)/2;
+            
+           
+            x = secondMin(v2); //test 6 passes
+           // x = matrix.matrix[v1, v2]; //test 6 dont pass
+
+            y = firstMin(v2);
+            
+            return (x+y);
         }
         private int secondMin(int x)
         {

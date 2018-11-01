@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Traveling_salesman_problem
 {
-    class DynamicTSP : TspSolver
+    public class DynamicTSP : TspSolver
     {
         private double[,] memo;
         private int vertexNumber;

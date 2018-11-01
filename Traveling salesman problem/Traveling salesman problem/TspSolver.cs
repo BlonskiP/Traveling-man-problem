@@ -7,7 +7,7 @@ using Traveling_salesman_problem;
 
 namespace Traveling_salesman_problem
 {
-    abstract class TspSolver
+    public abstract class TspSolver
     {
         public AdjacencyMatrix costMatrix;
 
