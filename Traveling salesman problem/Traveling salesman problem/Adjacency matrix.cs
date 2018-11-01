@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Traveling_salesman_problem
 {
-    class AdjacencyMatrix
+    public class AdjacencyMatrix
     {
         public int[,] matrix;
 

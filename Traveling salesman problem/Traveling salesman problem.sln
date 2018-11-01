@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Traveling salesman problem", "Traveling salesman problem\Traveling salesman problem.csproj", "{F9911A6F-3840-4BE4-88EF-791214E3D50C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSPTest", "TSPTest\TSPTest.csproj", "{73944EBC-F5DE-4A96-844A-5988A339571A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F9911A6F-3840-4BE4-88EF-791214E3D50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9911A6F-3840-4BE4-88EF-791214E3D50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9911A6F-3840-4BE4-88EF-791214E3D50C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73944EBC-F5DE-4A96-844A-5988A339571A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73944EBC-F5DE-4A96-844A-5988A339571A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73944EBC-F5DE-4A96-844A-5988A339571A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73944EBC-F5DE-4A96-844A-5988A339571A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
