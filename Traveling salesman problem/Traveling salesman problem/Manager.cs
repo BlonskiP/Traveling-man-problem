@@ -132,14 +132,14 @@ namespace Traveling_salesman_problem
             timeCounter timemaster = new timeCounter(100);
             excel = new ExcelManager("pomiary");
             excel.createNewFile();
-            for (int i = 2; i < 15; i++)
+            for (int i = 2; i < 10; i++)
             {
                 excel.changeCell(i, 3, timemaster.measureSolver(dynamic, i+2).ToString());//dynamic
-                Console.WriteLine("Dynamic END");
+                Console.WriteLine("Dynamic END" + i);
                 excel.changeCell(i, 4, timemaster.measureSolver(branch, i+2).ToString());//branch
-                Console.WriteLine("Branch&Bound done");
-                ///  excel.changeCell(i, 2, timemaster.measureSolver(brute, i+2).ToString()); //brute
-                ///      Console.WriteLine("BruteForce done");
+                Console.WriteLine("Branch&Bound done" +i);
+                excel.changeCell(i, 2, timemaster.measureSolver(brute, i+2).ToString()); //brute
+                Console.WriteLine("BruteForce done" + i);
             }
             excel.close();
         }

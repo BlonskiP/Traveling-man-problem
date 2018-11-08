@@ -91,8 +91,8 @@ namespace TSPTest
         [TestMethod]
         public void RandomTest()
         {
-            for(int i = 0; i < 10000; i++) {
-            AdjacencyMatrix testMatrix = new AdjacencyMatrix(10);
+            for(int i = 0; i < 5; i++) {
+            AdjacencyMatrix testMatrix = new AdjacencyMatrix(8);
             BranchAndBound solver = new BranchAndBound();
             testMatrix.GenerateRandomMatrix();
             DynamicTSP dynamicSolver = new DynamicTSP(testMatrix, 0);
@@ -112,7 +112,7 @@ namespace TSPTest
         public void FirstBoundTest()
         {
             AdjacencyMatrix testMatrix = new AdjacencyMatrix(4);
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 
                 BranchAndBound solver = new BranchAndBound();
