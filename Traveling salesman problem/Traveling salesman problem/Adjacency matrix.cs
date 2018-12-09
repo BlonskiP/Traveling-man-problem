@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Traveling_salesman_problem
 {
     public class AdjacencyMatrix
     {
         public int[,] matrix;
+        public float[,] fMatrix;
 
         public AdjacencyMatrix(string fileName)
         {
@@ -49,7 +52,32 @@ namespace Traveling_salesman_problem
             MessageBox.Show("FILE ERROR");
         }
         }
+        public AdjacencyMatrix(XDocument tspFile) {
 
+            var vertexList = tspFile.Descendants("graph").Elements("vertex").ToList();
+            int size = vertexList.Count();
+            fMatrix = new float[(int)size, (int)size];
+            int roundNumber = Int32.Parse(tspFile.Root.Element("ignoredDigits").Value);
+            int i = 0; //inumerator would be better :(
+            foreach (var vertex in vertexList)
+            {
+                var edgeList = vertex.Elements("edge").ToList();
+                foreach(var edge in edgeList)
+                {
+                    //Console.WriteLine((edge.Attribute("cost").Value));
+                    //Console.WriteLine((edge.Value));
+                    int vertexNumber = Int32.Parse(edge.Value);
+                    float cost = float.Parse(edge.Attribute("cost").Value, CultureInfo.InvariantCulture);
+                    System.Math.Round(cost, roundNumber);
+                    fMatrix[i, vertexNumber] = cost;
+
+
+                }
+                i++;
+            }
+            
+         
+        }
         private void CreateMatrixFromArry(int[] arr)
         {
             int temp;
@@ -98,11 +126,22 @@ namespace Traveling_salesman_problem
 
         public void print()
         {
+            if(matrix!=null)
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 for (int k = 0; k < matrix.GetLength(1); k++)
                     Console.Write(matrix[i,k]+" ");
                 Console.WriteLine("");
+            }
+            if (fMatrix != null)
+            {
+                Console.WriteLine("Matrix from XML");
+                for (int i = 0; i < fMatrix.GetLength(0); i++)
+                {
+                    for (int k = 0; k < fMatrix.GetLength(1); k++)
+                        Console.Write(fMatrix[i, k] + " ");
+                    Console.WriteLine("");
+                }
             }
         }
 

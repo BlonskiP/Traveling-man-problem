@@ -40,6 +40,7 @@ namespace Traveling_salesman_problem
             this.path_list = new System.Windows.Forms.ListBox();
             this.vertexCount_tb = new System.Windows.Forms.TextBox();
             this.time_lb = new System.Windows.Forms.Label();
+            this.Xml_upload_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RunTsp_btn
@@ -100,13 +101,13 @@ namespace Traveling_salesman_problem
             this.UploadFile_btn.Name = "UploadFile_btn";
             this.UploadFile_btn.Size = new System.Drawing.Size(101, 23);
             this.UploadFile_btn.TabIndex = 6;
-            this.UploadFile_btn.Text = "Upload File";
+            this.UploadFile_btn.Text = "Upload txt File";
             this.UploadFile_btn.UseVisualStyleBackColor = true;
             this.UploadFile_btn.Click += new System.EventHandler(this.UploadFile_btn_Click);
             // 
             // ShowMatrix_btn
             // 
-            this.ShowMatrix_btn.Location = new System.Drawing.Point(23, 129);
+            this.ShowMatrix_btn.Location = new System.Drawing.Point(23, 157);
             this.ShowMatrix_btn.Name = "ShowMatrix_btn";
             this.ShowMatrix_btn.Size = new System.Drawing.Size(293, 23);
             this.ShowMatrix_btn.TabIndex = 7;
@@ -142,11 +143,22 @@ namespace Traveling_salesman_problem
             this.time_lb.TabIndex = 10;
             this.time_lb.Text = "Time[ms]:";
             // 
+            // Xml_upload_btn
+            // 
+            this.Xml_upload_btn.Location = new System.Drawing.Point(23, 128);
+            this.Xml_upload_btn.Name = "Xml_upload_btn";
+            this.Xml_upload_btn.Size = new System.Drawing.Size(101, 23);
+            this.Xml_upload_btn.TabIndex = 11;
+            this.Xml_upload_btn.Text = "Upload XML file";
+            this.Xml_upload_btn.UseVisualStyleBackColor = true;
+            this.Xml_upload_btn.Click += new System.EventHandler(this.Xml_upload_btn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 164);
+            this.ClientSize = new System.Drawing.Size(500, 266);
+            this.Controls.Add(this.Xml_upload_btn);
             this.Controls.Add(this.time_lb);
             this.Controls.Add(this.vertexCount_tb);
             this.Controls.Add(this.path_list);
@@ -176,6 +188,7 @@ namespace Traveling_salesman_problem
         private System.Windows.Forms.ListBox path_list;
         private System.Windows.Forms.TextBox vertexCount_tb;
         private Label time_lb;
+        private Button Xml_upload_btn;
     }
 }
 
