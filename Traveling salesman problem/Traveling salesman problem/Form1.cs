@@ -116,5 +116,16 @@ namespace Traveling_salesman_problem
             
             
         }
+
+        private void Xml_upload_btn_Click(object sender, EventArgs e)
+        {
+            ofd.Filter = "xml| *.xml";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                fileName = ofd.FileName;
+            }
+
+            Manager.CreateMatrixFromXMLFile(fileName);
+        }
     }
 }

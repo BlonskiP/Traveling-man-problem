@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Traveling_salesman_problem
 {
@@ -121,6 +123,13 @@ namespace Traveling_salesman_problem
             timemaster.measureSolver(tester, verticles);
             timemaster.measureSolver(brute, verticles);
 
+        }
+
+        internal static void CreateMatrixFromXMLFile(string fileName)
+        {
+            XDocument doc = XDocument.Load(fileName);
+            
+            _matrix = new AdjacencyMatrix(doc);
         }
 
         public static void runMeasures()
