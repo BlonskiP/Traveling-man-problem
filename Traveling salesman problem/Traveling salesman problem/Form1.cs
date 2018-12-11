@@ -64,10 +64,7 @@ namespace Traveling_salesman_problem
             }
         }
 
-        private void Method_CB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void NewMatrix_Btn_Click(object sender, EventArgs e)
         {
@@ -126,6 +123,53 @@ namespace Traveling_salesman_problem
             }
 
             Manager.CreateMatrixFromXMLFile(fileName);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!Manager.isSolving)
+            {
+                path_list.Items.Clear();
+                if (Manager._matrix == null)
+                    Manager.MatrixGenerator(Int32.Parse(vertexCount_tb.Text));
+                if (TemperatureBox.Text.Length != 0 && comboBox1.SelectedIndex != -1 && CoolingBox.Text.Length !=0 && cadenceBox.Text.Length!=0)
+                {
+                    switch (comboBox1.SelectedIndex)
+                    {
+                        case 0:
+                            {
+
+                                Manager.RunSimulatedAnnealing(Int32.Parse(TemperatureBox.Text),  Int32.Parse(CoolingBox.Text), Int32.Parse(textBox1.Text),float.Parse(bBox.Text));
+                                break;
+                            }
+                        case 1:
+                            {
+                                Manager.RunTabu(Int32.Parse(cadenceBox.Text), Int32.Parse(textBox1.Text));
+                                break;
+                            }
+                    }
+
+                    time_lb.Text = "Time[ms]:" + Manager.timeCounter.Elapsed;
+                    cost_label.Text = "cost:" + Manager.cost.ToString();
+                    foreach (var vertex in Manager.path)
+                    {
+                        path_list.Items.Add(vertex);
+                    }
+                  
+                    Manager._matrix.print();
+                    Console.WriteLine("");
+                }
+            }
         }
     }
 }

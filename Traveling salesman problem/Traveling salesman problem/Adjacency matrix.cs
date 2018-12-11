@@ -24,7 +24,7 @@ namespace Traveling_salesman_problem
                 using (StreamReader sr = new StreamReader(fileName))
                 {
 
-                    string[] arrStr = sr.ReadToEnd().Replace(System.Environment.NewLine," ").Split(' ').Where(x=> x!="").ToArray();
+                    string[] arrStr = sr.ReadToEnd().Replace(System.Environment.NewLine, " ").Split(' ').Where(x => x != "").ToArray();
                     double size = Math.Sqrt(arrStr.Length);
                     int[] arr = new int[arrStr.Length];
 
@@ -46,11 +46,11 @@ namespace Traveling_salesman_problem
 
                 }
             }
-        
-        catch(Exception e)
-        {
-            MessageBox.Show("FILE ERROR");
-        }
+
+            catch (Exception e)
+            {
+                MessageBox.Show("FILE ERROR");
+            }
         }
         public AdjacencyMatrix(XDocument tspFile) {
 
@@ -62,7 +62,7 @@ namespace Traveling_salesman_problem
             foreach (var vertex in vertexList)
             {
                 var edgeList = vertex.Elements("edge").ToList();
-                foreach(var edge in edgeList)
+                foreach (var edge in edgeList)
                 {
                     //Console.WriteLine((edge.Attribute("cost").Value));
                     //Console.WriteLine((edge.Value));
@@ -75,8 +75,8 @@ namespace Traveling_salesman_problem
                 }
                 i++;
             }
-            
-         
+
+
         }
         private void CreateMatrixFromArry(int[] arr)
         {
@@ -84,7 +84,7 @@ namespace Traveling_salesman_problem
             double size = Math.Sqrt(arr.Length);
             if (size % 1 == 0)
             {
-                matrix=new int[(int)size,(int)size];
+                matrix = new int[(int)size, (int)size];
                 for (int i = 0; i < matrix.GetLength(0); i++)
                 {
                     for (int j = 0; j < matrix.GetLength(1); j++)
@@ -103,7 +103,7 @@ namespace Traveling_salesman_problem
 
         public AdjacencyMatrix(int verticles)
         {
-            matrix=new int[verticles,verticles];
+            matrix = new int[verticles, verticles];
         }
         private void correctPaths()
         {
@@ -115,24 +115,24 @@ namespace Traveling_salesman_problem
         public void GenerateRandomMatrix()
         {   //Random edges. This graph is always connected. Every Verticle is connected to each other.
             // 0 means it is free path.
-            Random  numberGenerator= new Random();
+            Random numberGenerator = new Random();
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 for (int k = 0; k < matrix.GetLength(1); k++)
-                    matrix[i, k] = numberGenerator.Next(1,9);
+                    matrix[i, k] = numberGenerator.Next(1, 9);
             }
             correctPaths();
         }
 
         public void print()
         {
-            if(matrix!=null)
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int k = 0; k < matrix.GetLength(1); k++)
-                    Console.Write(matrix[i,k]+" ");
-                Console.WriteLine("");
-            }
+            if (matrix != null)
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                    for (int k = 0; k < matrix.GetLength(1); k++)
+                        Console.Write(matrix[i, k] + " ");
+                    Console.WriteLine("");
+                }
             if (fMatrix != null)
             {
                 Console.WriteLine("Matrix from XML");
@@ -150,10 +150,18 @@ namespace Traveling_salesman_problem
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 for (int k = 0; k < matrix.GetLength(1); k++)
-                    matrix[i, k] = i+1;
+                    matrix[i, k] = i + 1;
             }
             correctPaths();
         }
-        
+        public float countCost(List<int> path){
+            float tourCost = 0;
+            for (int i=0; i < path.Count()-1; i++)
+            {
+                tourCost += fMatrix[path[i], path[i+1]];
+            }
+            
+            return tourCost;
+        }
     }
 }
