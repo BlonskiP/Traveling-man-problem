@@ -159,6 +159,28 @@ namespace Traveling_salesman_problem
         internal static void RunTabu(int cadence, int iterations)
         {
             Console.WriteLine("Tabu" + cadence + iterations);
+
+            isSolving = true;
+            path = new List<int>();
+            timeCounter = new Stopwatch();
+
+            timeCounter.Start();
+
+            TabuSearch tabu = new TabuSearch(_matrix, iterations, cadence);
+
+            tabu.Solve();
+
+            
+            timeCounter.Stop();
+            foreach (var element in tabu.bestSolution)
+            {
+                path.Add(element);
+            }
+
+
+
+            cost = tabu.lowestCost;
+            isSolving = false;
         }
 
         internal static void RunSimulatedAnnealing(int temperature, int cooling , int iterations, float b)

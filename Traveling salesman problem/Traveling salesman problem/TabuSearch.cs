@@ -15,7 +15,7 @@ namespace Traveling_salesman_problem
         int _maxIterations;
         int verticles;
         List<float> costs;
-        List<int> bestSolution;
+        public List<int> bestSolution;
         public float lowestCost;
         public TabuSearch(AdjacencyMatrix matrix, int iterations, int timeOfLife) {
             _matrix = matrix;
