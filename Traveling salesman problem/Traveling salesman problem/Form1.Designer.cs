@@ -30,6 +30,7 @@ namespace Traveling_salesman_problem
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.RunTsp_btn = new System.Windows.Forms.Button();
             this.NewMatrix_Btn = new System.Windows.Forms.Button();
             this.RunCalc_Btn = new System.Windows.Forms.Button();
@@ -41,6 +42,19 @@ namespace Traveling_salesman_problem
             this.vertexCount_tb = new System.Windows.Forms.TextBox();
             this.time_lb = new System.Windows.Forms.Label();
             this.Xml_upload_btn = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.TemperatureBox = new System.Windows.Forms.TextBox();
+            this.CoolingBox = new System.Windows.Forms.TextBox();
+            this.TemperatureText = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.CadenceText = new System.Windows.Forms.Label();
+            this.cadenceBox = new System.Windows.Forms.TextBox();
+            this.bBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // RunTsp_btn
@@ -84,7 +98,6 @@ namespace Traveling_salesman_problem
             this.Method_CB.Name = "Method_CB";
             this.Method_CB.Size = new System.Drawing.Size(182, 21);
             this.Method_CB.TabIndex = 3;
-            this.Method_CB.SelectedIndexChanged += new System.EventHandler(this.Method_CB_SelectedIndexChanged);
             // 
             // cost_label
             // 
@@ -145,7 +158,7 @@ namespace Traveling_salesman_problem
             // 
             // Xml_upload_btn
             // 
-            this.Xml_upload_btn.Location = new System.Drawing.Point(23, 128);
+            this.Xml_upload_btn.Location = new System.Drawing.Point(23, 382);
             this.Xml_upload_btn.Name = "Xml_upload_btn";
             this.Xml_upload_btn.Size = new System.Drawing.Size(101, 23);
             this.Xml_upload_btn.TabIndex = 11;
@@ -153,11 +166,138 @@ namespace Traveling_salesman_problem
             this.Xml_upload_btn.UseVisualStyleBackColor = true;
             this.Xml_upload_btn.Click += new System.EventHandler(this.Xml_upload_btn_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Simulated annealing",
+            "Tabu"});
+            this.comboBox1.Location = new System.Drawing.Point(130, 325);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 13;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 310);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Number of iterations";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(23, 326);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 15;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(23, 353);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Run";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // TemperatureBox
+            // 
+            this.TemperatureBox.Location = new System.Drawing.Point(406, 278);
+            this.TemperatureBox.Name = "TemperatureBox";
+            this.TemperatureBox.Size = new System.Drawing.Size(100, 20);
+            this.TemperatureBox.TabIndex = 17;
+            this.TemperatureBox.Text = "5";
+            this.TemperatureBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vertexCount_tb_KeyPressed);
+            // 
+            // CoolingBox
+            // 
+            this.CoolingBox.Location = new System.Drawing.Point(406, 312);
+            this.CoolingBox.Name = "CoolingBox";
+            this.CoolingBox.Size = new System.Drawing.Size(100, 20);
+            this.CoolingBox.TabIndex = 18;
+            this.CoolingBox.Text = "1";
+            this.CoolingBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vertexCount_tb_KeyPressed);
+            // 
+            // TemperatureText
+            // 
+            this.TemperatureText.AutoSize = true;
+            this.TemperatureText.Location = new System.Drawing.Point(333, 281);
+            this.TemperatureText.Name = "TemperatureText";
+            this.TemperatureText.Size = new System.Drawing.Size(67, 13);
+            this.TemperatureText.TabIndex = 19;
+            this.TemperatureText.Text = "Temperature";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(343, 315);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Cooling";
+            // 
+            // CadenceText
+            // 
+            this.CadenceText.AutoSize = true;
+            this.CadenceText.Location = new System.Drawing.Point(356, 433);
+            this.CadenceText.Name = "CadenceText";
+            this.CadenceText.Size = new System.Drawing.Size(50, 13);
+            this.CadenceText.TabIndex = 21;
+            this.CadenceText.Text = "Cadence";
+            // 
+            // cadenceBox
+            // 
+            this.cadenceBox.Location = new System.Drawing.Point(412, 430);
+            this.cadenceBox.Name = "cadenceBox";
+            this.cadenceBox.Size = new System.Drawing.Size(100, 20);
+            this.cadenceBox.TabIndex = 22;
+            this.cadenceBox.Text = "3";
+            this.cadenceBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vertexCount_tb_KeyPressed);
+            // 
+            // bBox
+            // 
+            this.bBox.Location = new System.Drawing.Point(409, 347);
+            this.bBox.Name = "bBox";
+            this.bBox.Size = new System.Drawing.Size(100, 20);
+            this.bBox.TabIndex = 23;
+            this.bBox.Text = "997";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(377, 350);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(14, 13);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "B";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 266);
+            this.ClientSize = new System.Drawing.Size(518, 529);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.bBox);
+            this.Controls.Add(this.cadenceBox);
+            this.Controls.Add(this.CadenceText);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.TemperatureText);
+            this.Controls.Add(this.CoolingBox);
+            this.Controls.Add(this.TemperatureBox);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.Xml_upload_btn);
             this.Controls.Add(this.time_lb);
             this.Controls.Add(this.vertexCount_tb);
@@ -189,6 +329,19 @@ namespace Traveling_salesman_problem
         private System.Windows.Forms.TextBox vertexCount_tb;
         private Label time_lb;
         private Button Xml_upload_btn;
+        private ContextMenuStrip contextMenuStrip1;
+        private ComboBox comboBox1;
+        private Label label1;
+        private TextBox textBox1;
+        private Button button1;
+        private TextBox TemperatureBox;
+        private TextBox CoolingBox;
+        private Label TemperatureText;
+        private Label label2;
+        private Label CadenceText;
+        private TextBox cadenceBox;
+        private TextBox bBox;
+        private Label label3;
     }
 }
 

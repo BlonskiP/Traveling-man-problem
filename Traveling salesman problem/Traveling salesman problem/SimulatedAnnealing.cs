@@ -17,8 +17,9 @@ namespace Traveling_salesman_problem
         float min_temperature;
         int max_iterations;
         int verticles;
-        float bestResult = float.MaxValue;
+        public float bestResult = float.MaxValue;
         Random random;
+        public List<int> result;
 
        public SimulatedAnnealing(AdjacencyMatrix matrix)
         {
@@ -100,6 +101,7 @@ namespace Traveling_salesman_problem
                 if(next.fitness<current.fitness)
                 {
                     current = next;
+                    result = new List<int>(next.route);
                 }
                 else if (calculateProbability(current, next, temperature))
                 {

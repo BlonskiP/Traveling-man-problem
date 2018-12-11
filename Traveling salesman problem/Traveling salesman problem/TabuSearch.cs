@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Traveling_salesman_problem
         AdjacencyMatrix _matrix;
         int _maxIterations;
         int verticles;
+        List<float> costs;
         List<int> bestSolution;
         public float lowestCost;
         public TabuSearch(AdjacencyMatrix matrix, int iterations, int timeOfLife) {
@@ -20,6 +22,7 @@ namespace Traveling_salesman_problem
             _maxIterations = iterations;
             verticles = _matrix.fMatrix.GetLength(0);
             tabuMap = new TabuMap(timeOfLife, verticles);
+            costs = new List<float>();
         }
 
         public override void SetVariables(AdjacencyMatrix matrix)
@@ -34,31 +37,39 @@ namespace Traveling_salesman_problem
             float currCost = _matrix.countCost(curr);
             lowestCost = currCost;
             int loop = 0;
-            for(int i=0; i < _maxIterations; i++)
+            foreach (var item in curr)
+                Trace.Write(item + " ");
+            Trace.WriteLine("");
+            costs.Add(lowestCost);
+            for (int i=0; i < _maxIterations; i++)
             {
                
                 List<int> newBestNeig = findBestNeig(curr);
-
+                
                 float newCost = _matrix.countCost(newBestNeig);
-
-                if (newCost == currCost) //if same result5x times
+                costs.Add(newCost);
+                if (newCost == lowestCost) //if same result5x times
                 {
                     loop++;
-
+                    curr = newBestNeig;
                 }
-                else { loop = 0; }
+                
 
-                if(loop==5)
+                if(loop==10)
                 {
                     loop = 0;
-                    bestSolution = new List<int>(newBestNeig);//remeber last best 
-                    curr = randomList();
+                    bestSolution = newBestNeig;
+                    curr = diversification(currCost); 
+                  
                     tabuMap.resetTabuMap();
                     continue;
 
                 }
-              
-                curr = newBestNeig;
+                if(lowestCost>newCost)
+                {
+                    lowestCost = newCost;
+                }
+                
                 
                 currCost = newCost;
                 tabuMap.decreseTabuLife();
@@ -90,7 +101,7 @@ namespace Traveling_salesman_problem
             int verticleB;
             float bestScore = _matrix.countCost(curr);
             float currScore = bestScore;
-            List<int> bestCurrNeig;
+            
             for (int i = 1; i < verticles; i++)
             {
                 for (int j = (i + 1); j < verticles; j++)
@@ -105,7 +116,7 @@ namespace Traveling_salesman_problem
                         {
                            
                             potencialNeig.Add(neig);
-                           
+                            tabuMap.makeMoveATabu(verticleA, verticleB);
                         }
                         neig = new List<int>(curr);
 
@@ -152,7 +163,32 @@ namespace Traveling_salesman_problem
             return false;
 
         }
-
+        private List<int> diversification(float cost)
+        {
+            List<int> newSolution = new List<int>();
+            List<List<int>> solutionList = new List<List<int>>();
+            solutionList.Add(randomList());
+            for(int i=0;i<10;i++)
+            {
+                List<int> randomSolution = randomList();
+                if (_matrix.countCost(randomSolution)<1.2*cost)
+                {
+                    solutionList.Add(randomSolution);
+                }
+            }
+            
+            float bestScore = float.MaxValue;
+            foreach(var solution in solutionList)
+            {
+                float newCost = _matrix.countCost(solution);
+                if (newCost < bestScore)
+                {
+                    bestScore = newCost;
+                    newSolution = new List<int>(solution);
+                }
+            }
+            return newSolution;
+        } 
         private List<int> FindBestGreedySolution()
         {
             _matrix.print();

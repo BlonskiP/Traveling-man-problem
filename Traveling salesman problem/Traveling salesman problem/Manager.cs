@@ -19,6 +19,9 @@ namespace Traveling_salesman_problem
         public static double cost;
         public static Stopwatch timeCounter;
 
+
+        public static float ErrorRate;
+
         public static void MatrixGenerator(int verticles)
         {
             _matrix=new AdjacencyMatrix(verticles);
@@ -151,6 +154,41 @@ namespace Traveling_salesman_problem
                 Console.WriteLine("BruteForce done" + i);
             }
             excel.close();
+        }
+
+        internal static void RunTabu(int cadence, int iterations)
+        {
+            Console.WriteLine("Tabu" + cadence + iterations);
+        }
+
+        internal static void RunSimulatedAnnealing(int temperature, int cooling , int iterations, float b)
+        {
+            Console.WriteLine("ANNELING" + temperature + " "+ cooling + " " + iterations);
+
+            isSolving = true;
+            path = new List<int>();
+            timeCounter = new Stopwatch();
+           
+            timeCounter.Start();
+          
+            SimulatedAnnealing anneling = new SimulatedAnnealing(_matrix);
+            string bb = b.ToString();
+            double power = Math.Pow((double)10, (double)bb.Length);
+
+            float parameter = b / (float)power;
+            
+            anneling.SetTemperature(temperature, b, cooling, iterations);
+            anneling.Calculate();
+            timeCounter.Stop();
+            foreach (var element in anneling.result)
+            {
+                path.Add(element);
+            }
+
+
+
+            cost = anneling.bestResult;
+            isSolving = false;
         }
 
         public static void CreateMatrixFromFile(string fileName)
