@@ -18,17 +18,33 @@ namespace TSPTest
 
             XDocument tspFile = XDocument.Load(file);
             AdjacencyMatrix testMatrix = new AdjacencyMatrix(tspFile);
-            TabuSearch test = new TabuSearch(testMatrix , 50000);
+            TabuSearch test = new TabuSearch(testMatrix , 50000, 5);
 
-            for (int i = 0; i < 1000; i++)
-            {
-                test.Solve();
-                float result = test.bestCost;
-                if (result > 3500)  // best result world known is 2020
-                {
-                    Assert.Fail();
-                }
-            }
+            test.Solve();
+            float Result1 = test.lowestCost;
+            test = new TabuSearch(testMatrix, 5000, 5);
+
+            test.Solve();
+            float Result2 = test.lowestCost;
+             test = new TabuSearch(testMatrix, 10000, 5);
+
+            test.Solve();
+            float Result3 = test.lowestCost;
+             test = new TabuSearch(testMatrix, 15000, 5);
+
+            test.Solve();
+            float Result4 = test.lowestCost;
+             test = new TabuSearch(testMatrix, 20000, 5);
+
+            test.Solve();
+            float Result5 = test.lowestCost;
+             test = new TabuSearch(testMatrix, 25000, 5);
+
+            test.Solve();
+            float Result6 = test.lowestCost;
+            
+
+
         }
     }
 }
