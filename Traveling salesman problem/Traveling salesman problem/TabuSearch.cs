@@ -40,7 +40,9 @@ namespace Traveling_salesman_problem
                 float newCost = _matrix.countCost(newBestNeig);
                 curr = newBestNeig;
                 currCost = newCost;
+                tabuMap.resetTabuMap();
             }
+
             lowestCost = currCost;
 
         }
@@ -66,13 +68,16 @@ namespace Traveling_salesman_problem
                         currScore = _matrix.countCost(neig); 
                         if(currScore<bestScore)
                         {
+                            tabuMap.makeMoveATabu(verticleA, verticleB);
                             potencialNeig.Add(neig);
                             neig = new List<int>(curr);
                         }
 
                     }
+                    
 
                 }
+                tabuMap.decreseTabuLife();
             }
 
             foreach(var neigbour in potencialNeig)

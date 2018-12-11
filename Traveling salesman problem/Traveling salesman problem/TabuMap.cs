@@ -18,7 +18,7 @@ namespace Traveling_salesman_problem
             tabuMap[verticleA, verticleB] += _timeOfLife;
             tabuMap[verticleB, verticleA] += _timeOfLife;
         }
-        public void decreseTabuLife(int verticleA, int verticleB)
+        public void decreseTabuLife()
         {
             for (int i = 0; i < _vertices; i++)
                 for (int k = 0; k < _vertices; k++) 
