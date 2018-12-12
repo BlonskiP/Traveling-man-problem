@@ -10,6 +10,7 @@ namespace Traveling_salesman_problem
 
     public class TabuSearch : TspSolver
     {
+        bool diversificationState = false;
         TabuMap tabuMap;
         AdjacencyMatrix _matrix;
         int _maxIterations;
@@ -53,8 +54,8 @@ namespace Traveling_salesman_problem
                     loop++;
                     curr = newBestNeig;
                 }
-                
 
+                if (diversificationState)
                 if(loop==10)
                 {
                     loop = 0;
@@ -220,6 +221,7 @@ namespace Traveling_salesman_problem
             list[indexA] = list[indexB];
             list[indexB] = tmp;
         }
+       
 
     }
 }
