@@ -55,6 +55,7 @@ namespace Traveling_salesman_problem
             this.cadenceBox = new System.Windows.Forms.TextBox();
             this.bBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RunTsp_btn
@@ -225,7 +226,8 @@ namespace Traveling_salesman_problem
             this.CoolingBox.Name = "CoolingBox";
             this.CoolingBox.Size = new System.Drawing.Size(100, 20);
             this.CoolingBox.TabIndex = 18;
-            this.CoolingBox.Text = "1";
+            this.CoolingBox.Text = "9997";
+            this.CoolingBox.TextChanged += new System.EventHandler(this.CoolingBox_TextChanged);
             this.CoolingBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vertexCount_tb_KeyPressed);
             // 
             // TemperatureText
@@ -240,11 +242,11 @@ namespace Traveling_salesman_problem
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(343, 315);
+            this.label2.Location = new System.Drawing.Point(329, 315);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 20;
-            this.label2.Text = "Cooling";
+            this.label2.Text = "Cooling/1000";
             // 
             // CadenceText
             // 
@@ -270,22 +272,33 @@ namespace Traveling_salesman_problem
             this.bBox.Name = "bBox";
             this.bBox.Size = new System.Drawing.Size(100, 20);
             this.bBox.TabIndex = 23;
-            this.bBox.Text = "997";
+            this.bBox.Text = "1";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(377, 350);
+            this.label3.Location = new System.Drawing.Point(333, 353);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(14, 13);
+            this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 24;
-            this.label3.Text = "B";
+            this.label3.Text = "minTemp/10";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(155, 382);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 25;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.tabuAndSaMeasure);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(518, 529);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.bBox);
             this.Controls.Add(this.cadenceBox);
@@ -342,6 +355,7 @@ namespace Traveling_salesman_problem
         private TextBox cadenceBox;
         private TextBox bBox;
         private Label label3;
+        private Button button2;
     }
 }
 

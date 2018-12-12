@@ -21,12 +21,12 @@ namespace TSPTest
             AdjacencyMatrix testMatrix = new AdjacencyMatrix(tspFile);
             TabuSearch test = new TabuSearch(testMatrix , 10000, 3);
 
-           
+            float lowestKnown = 2020;
 
-            test = new TabuSearch(testMatrix, 10000, 8);
+            test = new TabuSearch(testMatrix, 10000, 4);
             test.Solve();
             float Result7 = test.lowestCost;
-            float errRat7 = (Result7 - 2020) / 2020;
+            float errRat7 = (Result7 - lowestKnown) / lowestKnown;
 
 
 

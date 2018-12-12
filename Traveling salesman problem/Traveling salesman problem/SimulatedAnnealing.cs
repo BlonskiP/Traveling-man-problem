@@ -79,9 +79,11 @@ namespace Traveling_salesman_problem
             //iterations
             while(temperature > min_temperature && iteration < max_iterations)
             {
-                if (current.fitness < bestResult) bestResult = current.fitness;
+                if (current.fitness < bestResult)
+                    bestResult = current.fitness;
                 next = new tour();
                 next.route = new List<int>();
+
                 for(int i=0;i<current.route.Count;i++)
                 {
                     next.route.Add(current.route[i]);
@@ -118,11 +120,11 @@ namespace Traveling_salesman_problem
 
         private bool calculateProbability(tour current, tour next, float temperature)
         {
-            int RAND_MAX = 32767;
-            double prob = random.Next(0,RAND_MAX);
+            //int RAND_MAX = 32767;
+            double prob = random.Next(0, 1000) / 1000;
             double e = Math.Exp(-1.0 * (changeInCost(next, current) / temperature));
           
-            if(prob / (1.0 * RAND_MAX) < e)
+            if(prob  < e)
             {
                 return true; }
             else { return false; }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace Traveling_salesman_problem
         public static List<int> path;
         public static double cost;
         public static Stopwatch timeCounter;
-
+        static string root = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
 
         public static float ErrorRate;
 
@@ -183,7 +184,32 @@ namespace Traveling_salesman_problem
             isSolving = false;
         }
 
-        internal static void RunSimulatedAnnealing(int temperature, int cooling , int iterations, float b)
+        internal static void runMeasuresTsSA()
+        {
+            string file = root + "\\ftv140  .xml";
+            XDocument tspFile = XDocument.Load(file);
+            AdjacencyMatrix matrix = new AdjacencyMatrix(tspFile);
+            TabuSearch tabu = new TabuSearch(matrix,10000,3);
+            SimulatedAnnealing ann = new SimulatedAnnealing(matrix);
+           // excel = new ExcelManager("pomiary");
+           // excel.createNewFile();
+            for (int i = 1; i < 4; i++)
+            {
+                float result = 0;
+                for(int k = 0; k < 10; k++)
+                {
+                    tabu = new TabuSearch(matrix, 100 * i, 3);
+                    tabu.Solve();
+                    result += tabu.lowestCost;
+                    
+                }
+                float final = result / 10;
+                excel.changeCell(3+1,i+2,final.ToString());  
+            }
+            excel.close();
+        }
+
+        internal static void RunSimulatedAnnealing(int temperature, float cooling , int iterations, float mintemp)
         {
             Console.WriteLine("ANNELING" + temperature + " "+ cooling + " " + iterations);
 
@@ -194,12 +220,12 @@ namespace Traveling_salesman_problem
             timeCounter.Start();
           
             SimulatedAnnealing anneling = new SimulatedAnnealing(_matrix);
-            string bb = b.ToString();
-            double power = Math.Pow((double)10, (double)bb.Length);
+            string coolingToS = cooling.ToString();
+            double power = Math.Pow((double)10, (double)coolingToS.Length);
 
-            float parameter = b / (float)power;
+            float parameter = cooling / (float)power;
             
-            anneling.SetTemperature(temperature, b, cooling, iterations);
+            anneling.SetTemperature(temperature, cooling, mintemp, iterations);
             anneling.Calculate();
             timeCounter.Stop();
             foreach (var element in anneling.result)

@@ -149,7 +149,7 @@ namespace Traveling_salesman_problem
                         case 0:
                             {
 
-                                Manager.RunSimulatedAnnealing(Int32.Parse(TemperatureBox.Text),  Int32.Parse(CoolingBox.Text), Int32.Parse(textBox1.Text),float.Parse(bBox.Text));
+                                Manager.RunSimulatedAnnealing(Int32.Parse(TemperatureBox.Text),  float.Parse(CoolingBox.Text), Int32.Parse(textBox1.Text),float.Parse(bBox.Text));
                                 break;
                             }
                         case 1:
@@ -170,6 +170,16 @@ namespace Traveling_salesman_problem
                     Console.WriteLine("");
                 }
             }
+        }
+
+        private void tabuAndSaMeasure(object sender, EventArgs e) // run measur
+        {
+            Manager.runMeasuresTsSA();
+        }
+
+        private void CoolingBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
