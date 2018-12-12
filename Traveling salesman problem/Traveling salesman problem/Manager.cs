@@ -186,25 +186,25 @@ namespace Traveling_salesman_problem
 
         internal static void runMeasuresTsSA()
         {
-            string file = root + "\\ftv140  .xml";
+            string file = root + "\\ftv47.xml";
             XDocument tspFile = XDocument.Load(file);
             AdjacencyMatrix matrix = new AdjacencyMatrix(tspFile);
             TabuSearch tabu = new TabuSearch(matrix,10000,3);
             SimulatedAnnealing ann = new SimulatedAnnealing(matrix);
-           // excel = new ExcelManager("pomiary");
-           // excel.createNewFile();
+            excel = new ExcelManager("pomiary");
+            excel.createNewFile();
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
                 for(int k = 0; k < 10; k++)
                 {
-                    tabu = new TabuSearch(matrix, 100 * i, 3);
+                    tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.Solve();
                     result += tabu.lowestCost;
                     
                 }
                 float final = result / 10;
-                excel.changeCell(3+1,i+2,final.ToString());  
+                excel.changeCell(2,i+2,final.ToString());  
             }
             excel.close();
         }

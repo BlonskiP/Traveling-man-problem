@@ -57,20 +57,32 @@ namespace Traveling_salesman_problem
 
         private void setup(Worksheet workSheet)
         {
-            // X Y
-            // X - wiersze Y- kolumny
-            workSheet.Cells[1, 1] = "Ilosc wierzchołków";
-            workSheet.Cells[1, 2] = "Brute Force";
-            workSheet.Cells[1, 3] = "DynamicProgrammin";
-            workSheet.Cells[1, 4] = "B&B";
-            workSheet.Cells[2, 1] = "4";
-            workSheet.Cells[3, 1] = "5";
-            workSheet.Cells[4, 1] = "6";
-            workSheet.Cells[5, 1] = "7";
-            workSheet.Cells[6, 1] = "8";
-            workSheet.Cells[7, 1] = "9";
-            workSheet.Cells[8, 1] = "10";
-            workSheet.Cells[9, 1] = "11";
+            // y x 
+            workSheet.Cells[1, 2] = "Tabela wynikow";
+            workSheet.Cells[2, 1] = "nazwa pliku";
+            workSheet.Cells[3, 1] = "1k";
+            workSheet.Cells[4, 1] = "2k";
+            workSheet.Cells[5, 1] = "3k";
+           
+            for(int i=2;i<33;i+=3)
+            {
+                workSheet.Cells[2, i] = " ftv47.xml";
+                workSheet.Cells[2, i + 1] = "ftv170.xml";
+                workSheet.Cells[2, i + 2] = "rbg403.xml";
+            }
+           
+            workSheet.Cells[1, 5] = " tabu bez ver wyniki";
+            workSheet.Cells[1, 8] = " tabu sąsiedzi 2or";
+            workSheet.Cells[1, 11] = " tabu wymiana";
+            workSheet.Cells[1, 14] = " tabu 4 or";
+
+            workSheet.Cells[1, 17] = " tabu sąsiedzi 2or bez";
+            workSheet.Cells[1, 20] = " tabu wymiana bez";
+            workSheet.Cells[1, 23] = " tabu 4 or bez";
+
+            workSheet.Cells[1, 26] = " Sa 0.9996";
+            workSheet.Cells[1, 29] = " sa 0.9997";
+            workSheet.Cells[1, 32] = " sa 0.9998";
         }
 
         public void open() {
@@ -88,7 +100,7 @@ namespace Traveling_salesman_problem
         }
         public void changeCell(int x, int y, string change)
         {
-            workSheet.Cells[x, y] = Double.Parse(change);
+            workSheet.Cells[y, x] = Double.Parse(change);
 
         }
     }
