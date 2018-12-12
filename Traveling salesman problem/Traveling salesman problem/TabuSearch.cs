@@ -18,6 +18,7 @@ namespace Traveling_salesman_problem
         List<float> costs;
         public List<int> bestSolution;
         public float lowestCost;
+        public string neigState = "2or";
         public TabuSearch(AdjacencyMatrix matrix, int iterations, int timeOfLife) {
             _matrix = matrix;
             _maxIterations = iterations;
@@ -44,9 +45,21 @@ namespace Traveling_salesman_problem
             costs.Add(lowestCost);
             for (int i=0; i < _maxIterations; i++)
             {
-               
-                List<int> newBestNeig = findBestNeig(curr);
-                
+
+                List<int> newBestNeig = new List<int>();
+
+                switch (neigState)
+                {
+                    case "2or": {
+                            newBestNeig = findBestNeig2or(curr);
+                            break; }
+                    case "3or": {
+                            newBestNeig = findBestNeig3or(curr);
+                            break; }
+                    case "1switch": {
+                            newBestNeig = findBestNeig1switch(curr);
+                            break; }
+                }
                 float newCost = _matrix.countCost(newBestNeig);
                 costs.Add(newCost);
                 if (newCost == lowestCost) //if same result5x times
@@ -94,7 +107,7 @@ namespace Traveling_salesman_problem
             newList.Add(0);
             return newList;
         }
-        private List<int> findBestNeig(List<int> curr)
+        private List<int> findBestNeig2or(List<int> curr)
         {
             List<int> neig = new List<int>(curr);
             List<List<int>> potencialNeig = new List<List<int>>();
@@ -221,6 +234,8 @@ namespace Traveling_salesman_problem
             list[indexA] = list[indexB];
             list[indexB] = tmp;
         }
+
+
        
 
     }
