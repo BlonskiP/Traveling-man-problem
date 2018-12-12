@@ -10,7 +10,7 @@ namespace Traveling_salesman_problem
 
     public class TabuSearch : TspSolver
     {
-        bool diversificationState = false;
+        public bool diversificationState = false;
         TabuMap tabuMap;
         AdjacencyMatrix _matrix;
         int _maxIterations;
@@ -31,7 +31,7 @@ namespace Traveling_salesman_problem
         {
             throw new NotImplementedException();
         }
-
+       
         public override void Solve()
         {
             List<int> curr = FindBestGreedySolution();
@@ -39,9 +39,6 @@ namespace Traveling_salesman_problem
             float currCost = _matrix.countCost(curr);
             lowestCost = currCost;
             int loop = 0;
-            foreach (var item in curr)
-                Trace.Write(item + " ");
-            Trace.WriteLine("");
             costs.Add(lowestCost);
             for (int i=0; i < _maxIterations; i++)
             {
@@ -122,6 +119,7 @@ namespace Traveling_salesman_problem
                 {
                     verticleA = i;
                     verticleB = j;
+
                     if (!tabuMap.IsMoveTabu(verticleA, verticleB) || aspiration(bestScore,verticleA,verticleB,neig))
                     {
                         Swap<int>(neig, verticleA, verticleB);
@@ -130,7 +128,7 @@ namespace Traveling_salesman_problem
                         {
                            
                             potencialNeig.Add(neig);
-                            tabuMap.makeMoveATabu(verticleA, verticleB);
+                            
                         }
                         neig = new List<int>(curr);
 
@@ -154,6 +152,69 @@ namespace Traveling_salesman_problem
             createTaboMove(neig,curr);
 
                     return neig;
+        }
+        private List<int> findBestNeig3or(List<int> curr)
+        {
+
+            List<int> neig = new List<int>(curr);
+            List<List<int>> potencialNeig = new List<List<int>>();
+            int verticleA;
+            int verticleB;
+            int verticleC;
+            float bestScore = _matrix.countCost(curr);
+            float currScore = bestScore;
+
+            for (int i = 1; i < verticles; i++)
+            {
+                for (int j = (i + 1); j < verticles; j++)
+                {
+                    for (int k = (j+1); k<verticles; k++)
+                    {
+                        verticleA = i;
+                        verticleB = j;
+                        verticleC = k;
+                        if (!tabuMap.IsMoveTabu(verticleA, verticleB) ||
+                            aspiration(bestScore, verticleA, verticleB, neig) ||
+                            !tabuMap.IsMoveTabu(verticleA, verticleC) || 
+                            !tabuMap.IsMoveTabu(verticleC, verticleB))
+                        {
+                            Swap<int>(neig, verticleA, verticleB);
+                            Swap<int>(neig, verticleA, verticleC);
+                            currScore = _matrix.countCost(neig);
+                            if (currScore < bestScore)
+                            {
+
+                                potencialNeig.Add(neig);
+
+                            }
+                            neig = new List<int>(curr);
+
+                        }
+                    }
+
+                }
+
+
+            }
+            foreach (var neigbour in potencialNeig)
+            {
+                float tempCost = _matrix.countCost(neigbour);
+                if (tempCost < bestScore)
+                {
+                    bestScore = tempCost;
+                    neig = new List<int>(neigbour);
+                }
+            }
+
+            createTaboMove(neig, curr);
+
+            return neig;
+        }
+
+        private List<int> findBestNeig1switch(List<int> curr)
+        {
+            List<int> neig = new List<int>();
+            return neig;
         }
 
         private void createTaboMove(List<int> neig, List<int> curr)
