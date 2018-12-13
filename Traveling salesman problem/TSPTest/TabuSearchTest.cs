@@ -19,13 +19,13 @@ namespace TSPTest
 
             XDocument tspFile = XDocument.Load(file);
             AdjacencyMatrix testMatrix = new AdjacencyMatrix(tspFile);
-            TabuSearch test = new TabuSearch(testMatrix , 10000, 3);
+            TabuSearch test = new TabuSearch(testMatrix , 1000, 3);
             test.diversificationState = true;
             test.Solve();
             float lowestKnown = 2020;
             float Result1= test.lowestCost;
             float errRat1 = (Result1- lowestKnown) / lowestKnown;
-            test = new TabuSearch(testMatrix, 10000, 4);
+            test = new TabuSearch(testMatrix, 2000, 3);
             test.diversificationState = true;
             test.neigState = "3or";
             test.Solve();
