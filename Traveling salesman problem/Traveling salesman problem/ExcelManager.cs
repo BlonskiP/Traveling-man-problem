@@ -58,7 +58,7 @@ namespace Traveling_salesman_problem
         private void setup(Worksheet workSheet)
         {
             // y x 
-            workSheet.Cells[1, 2] = "Tabela wynikow";
+           
             workSheet.Cells[2, 1] = "nazwa pliku";
             workSheet.Cells[3, 1] = "1k";
             workSheet.Cells[4, 1] = "2k";
@@ -71,18 +71,19 @@ namespace Traveling_salesman_problem
                 workSheet.Cells[2, i + 2] = "rbg403.xml";
             }
            
-            workSheet.Cells[1, 5] = " tabu bez ver wyniki";
-            workSheet.Cells[1, 8] = " tabu sąsiedzi 2or";
-            workSheet.Cells[1, 11] = " tabu wymiana";
-            workSheet.Cells[1, 14] = " tabu 4 or";
+           
+            workSheet.Cells[1, 2] = " tabu 2or";
+            workSheet.Cells[1, 5] = " tabu 3or";
+            workSheet.Cells[1, 8] = " tabu 1switch";
 
-            workSheet.Cells[1, 17] = " tabu sąsiedzi 2or bez";
-            workSheet.Cells[1, 20] = " tabu wymiana bez";
-            workSheet.Cells[1, 23] = " tabu 4 or bez";
+            workSheet.Cells[1, 11] = " tabu sąsiedzi 2or bez";
+            workSheet.Cells[1, 14] = " tabu 3or bez";
+            workSheet.Cells[1, 17] = " tabu 1switch bez";
 
-            workSheet.Cells[1, 26] = " Sa 0.9996";
-            workSheet.Cells[1, 29] = " sa 0.9997";
-            workSheet.Cells[1, 32] = " sa 0.9998";
+
+            workSheet.Cells[1, 20] = " Sa 0.9996";
+            workSheet.Cells[1, 23] = " sa 0.9997";
+            workSheet.Cells[1, 26] = " sa 0.9998";
         }
 
         public void open() {

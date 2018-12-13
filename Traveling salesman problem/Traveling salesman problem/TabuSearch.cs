@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Traveling_salesman_problem
 {
@@ -45,18 +41,7 @@ namespace Traveling_salesman_problem
 
                 List<int> newBestNeig = new List<int>();
 
-                switch (neigState)
-                {
-                    case "2or": {
-                            newBestNeig = findBestNeig2or(curr);
-                            break; }
-                    case "3or": {
-                            newBestNeig = findBestNeig3or(curr);
-                            break; }
-                    case "1switch": {
-                            newBestNeig = findBestNeig1switch(curr);
-                            break; }
-                }
+                newBestNeig = findBest(curr);
                 float newCost = _matrix.countCost(newBestNeig);
                 costs.Add(newCost);
                 if (newCost == lowestCost) //if same result5x times
@@ -80,8 +65,8 @@ namespace Traveling_salesman_problem
                 {
                     lowestCost = newCost;
                 }
-                
-                
+
+                curr = newBestNeig;
                 currCost = newCost;
                 tabuMap.decreseTabuLife();
             }
@@ -126,7 +111,7 @@ namespace Traveling_salesman_problem
                         currScore = _matrix.countCost(neig); 
                         if(currScore<bestScore)
                         {
-                           
+                            bestScore = currScore;
                             potencialNeig.Add(neig);
                             
                         }
@@ -213,7 +198,46 @@ namespace Traveling_salesman_problem
 
         private List<int> findBestNeig1switch(List<int> curr)
         {
-            List<int> neig = new List<int>();
+            Random rnd = new Random();
+            List<int> neig = new List<int>(curr);
+            List<List<int>> potencialNeig = new List<List<int>>();
+            int verticleA = rnd.Next(1, neig.Count-1);
+            float bestScore = _matrix.countCost(curr);
+            float currScore = bestScore;
+            neig.RemoveAt(neig.IndexOf(verticleA));
+            
+            for(int i=0;i<neig.Count;i++)
+            {// i = index
+                if (!tabuMap.IsMoveTabu(verticleA, i) || aspiration(bestScore, verticleA, i, neig))
+                {
+                    neig.Insert(i, verticleA);
+                    currScore = _matrix.countCost(neig);
+                    if(currScore<bestScore)
+                    {
+                        bestScore = currScore;
+                        potencialNeig.Add(neig);
+                    }
+                    neig = new List<int>(curr);
+                    neig.RemoveAt(neig.IndexOf(verticleA));
+                }
+
+            }
+            neig = new List<int>(curr);
+
+
+
+            foreach (var neigbour in potencialNeig)
+            {
+                float tempCost = _matrix.countCost(neigbour);
+                if (tempCost < bestScore)
+                {
+                    bestScore = tempCost;
+                    neig = new List<int>(neigbour);
+                }
+            }
+
+            createTaboMove(neig, curr);
+
             return neig;
         }
 
@@ -295,7 +319,31 @@ namespace Traveling_salesman_problem
             list[indexA] = list[indexB];
             list[indexB] = tmp;
         }
+        
+        private List<int> findBest(List<int> curr)
+        {
+            List<int> best = new List<int>();
+            switch (neigState)
+            {
+                case "2or":
+                    {
+                       best = findBestNeig2or(curr);
+                        break;
+                    }
+                case "3or":
+                    {
+                        best= findBestNeig3or(curr);
+                        break;
+                    }
+                case "1switch":
+                    {
+                        best = findBestNeig1switch(curr);
+                        break;
+                    }
+            }
 
+            return best;
+        }
 
        
 

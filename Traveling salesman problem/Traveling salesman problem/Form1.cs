@@ -154,7 +154,7 @@ namespace Traveling_salesman_problem
                             }
                         case 1:
                             {
-                                Manager.RunTabu(Int32.Parse(cadenceBox.Text), Int32.Parse(textBox1.Text));
+                                Manager.RunTabu(Int32.Parse(cadenceBox.Text), Int32.Parse(textBox1.Text), neigBox.Text, diversificationBox.Checked);
                                 break;
                             }
                     }

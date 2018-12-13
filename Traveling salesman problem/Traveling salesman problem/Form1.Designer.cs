@@ -56,6 +56,8 @@ namespace Traveling_salesman_problem
             this.bBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.neigBox = new System.Windows.Forms.ComboBox();
+            this.diversificationBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // RunTsp_btn
@@ -293,11 +295,35 @@ namespace Traveling_salesman_problem
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.tabuAndSaMeasure);
             // 
+            // neigBox
+            // 
+            this.neigBox.FormattingEnabled = true;
+            this.neigBox.Items.AddRange(new object[] {
+            "2or",
+            "3or",
+            "1switch"});
+            this.neigBox.Location = new System.Drawing.Point(130, 280);
+            this.neigBox.Name = "neigBox";
+            this.neigBox.Size = new System.Drawing.Size(121, 21);
+            this.neigBox.TabIndex = 26;
+            // 
+            // diversificationBox
+            // 
+            this.diversificationBox.AutoSize = true;
+            this.diversificationBox.Location = new System.Drawing.Point(171, 257);
+            this.diversificationBox.Name = "diversificationBox";
+            this.diversificationBox.Size = new System.Drawing.Size(90, 17);
+            this.diversificationBox.TabIndex = 27;
+            this.diversificationBox.Text = "diversification";
+            this.diversificationBox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(518, 529);
+            this.Controls.Add(this.diversificationBox);
+            this.Controls.Add(this.neigBox);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.bBox);
@@ -356,6 +382,8 @@ namespace Traveling_salesman_problem
         private TextBox bBox;
         private Label label3;
         private Button button2;
+        private ComboBox neigBox;
+        private CheckBox diversificationBox;
     }
 }
 
