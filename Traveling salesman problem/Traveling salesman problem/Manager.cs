@@ -222,8 +222,7 @@ namespace Traveling_salesman_problem
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
-            excel = new ExcelManager("pomiary");
-            excel.createNewFile();
+           
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
@@ -247,8 +246,7 @@ namespace Traveling_salesman_problem
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
-            excel = new ExcelManager("pomiary");
-            excel.createNewFile();
+            
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
@@ -293,8 +291,7 @@ namespace Traveling_salesman_problem
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
-            excel = new ExcelManager("pomiary");
-            excel.createNewFile();
+            
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
@@ -318,8 +315,7 @@ namespace Traveling_salesman_problem
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
-            excel = new ExcelManager("pomiary");
-            excel.createNewFile();
+           
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
@@ -363,8 +359,7 @@ namespace Traveling_salesman_problem
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
-            excel = new ExcelManager("pomiary");
-            excel.createNewFile();
+            
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
@@ -388,8 +383,7 @@ namespace Traveling_salesman_problem
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
-            excel = new ExcelManager("pomiary");
-            excel.createNewFile();
+          
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
@@ -436,8 +430,7 @@ namespace Traveling_salesman_problem
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
-            excel = new ExcelManager("pomiary");
-            excel.createNewFile();
+          
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
@@ -461,8 +454,7 @@ namespace Traveling_salesman_problem
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
-            excel = new ExcelManager("pomiary");
-            excel.createNewFile();
+           
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
@@ -506,8 +498,7 @@ namespace Traveling_salesman_problem
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
-            excel = new ExcelManager("pomiary");
-            excel.createNewFile();
+           
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
@@ -531,8 +522,7 @@ namespace Traveling_salesman_problem
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
-            excel = new ExcelManager("pomiary");
-            excel.createNewFile();
+           
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
@@ -574,8 +564,7 @@ namespace Traveling_salesman_problem
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
-            excel = new ExcelManager("pomiary");
-            excel.createNewFile();
+           
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
@@ -599,8 +588,7 @@ namespace Traveling_salesman_problem
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
-            excel = new ExcelManager("pomiary");
-            excel.createNewFile();
+           
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;

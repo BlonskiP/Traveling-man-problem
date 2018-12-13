@@ -133,16 +133,16 @@ namespace Traveling_salesman_problem
                         Console.Write(matrix[i, k] + " ");
                     Console.WriteLine("");
                 }
-            if (fMatrix != null)
-            {
-                Console.WriteLine("Matrix from XML");
-                for (int i = 0; i < fMatrix.GetLength(0); i++)
-                {
-                    for (int k = 0; k < fMatrix.GetLength(1); k++)
-                        Console.Write(fMatrix[i, k] + " ");
-                    Console.WriteLine("");
-                }
-            }
+            //if (fMatrix != null)
+            //{
+            //    Console.WriteLine("Matrix from XML");
+            //    for (int i = 0; i < fMatrix.GetLength(0); i++)
+            //    {
+            //        for (int k = 0; k < fMatrix.GetLength(1); k++)
+            //            Console.Write(fMatrix[i, k] + " ");
+            //        Console.WriteLine("");
+            //    }
+            //}
         }
 
         public void setTestMatrix()
