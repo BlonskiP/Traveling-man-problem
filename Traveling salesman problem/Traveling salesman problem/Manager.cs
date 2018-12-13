@@ -206,7 +206,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = true;
-                    tabu.neigState = "or2";
+                    tabu.neigState = "2or";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -230,7 +230,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = true;
-                    tabu.neigState = "or2";
+                    tabu.neigState = "2or";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -254,7 +254,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = true;
-                    tabu.neigState = "or2";
+                    tabu.neigState = "2or";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -274,7 +274,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = true;
-                    tabu.neigState = "or3";
+                    tabu.neigState = "3or";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -299,7 +299,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = true;
-                    tabu.neigState = "or3";
+                    tabu.neigState = "3or";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -323,7 +323,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = true;
-                    tabu.neigState = "or3";
+                    tabu.neigState = "3or";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -343,7 +343,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = true;
-                    tabu.neigState = "switch1";
+                    tabu.neigState = "1switch";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -367,7 +367,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = true;
-                    tabu.neigState = "switch1";
+                    tabu.neigState = "1switch";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -391,7 +391,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = true;
-                    tabu.neigState = "switch1";
+                    tabu.neigState = "1switch";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -414,7 +414,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = false;
-                    tabu.neigState = "or2";
+                    tabu.neigState = "2or";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -438,7 +438,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = false;
-                    tabu.neigState = "or2";
+                    tabu.neigState = "2or";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -462,7 +462,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = false;
-                    tabu.neigState = "or2";
+                    tabu.neigState = "2or";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -482,7 +482,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = false;
-                    tabu.neigState = "or3";
+                    tabu.neigState = "3or";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -506,7 +506,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = false;
-                    tabu.neigState = "or3";
+                    tabu.neigState = "3or";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -530,7 +530,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = false;
-                    tabu.neigState = "or3";
+                    tabu.neigState = "3or";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -548,7 +548,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = false;
-                    tabu.neigState = "switch1";
+                    tabu.neigState = "1switch";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -572,7 +572,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState = false;
-                    tabu.neigState = "switch1";
+                    tabu.neigState = "1switch";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -596,7 +596,7 @@ namespace Traveling_salesman_problem
                 {
                     tabu = new TabuSearch(matrix, 1000 * i, 3);
                     tabu.diversificationState =false;
-                    tabu.neigState = "switch1";
+                    tabu.neigState = "1switch";
                     tabu.Solve();
                     result += tabu.lowestCost;
 
