@@ -35,7 +35,7 @@ namespace Traveling_salesman_problem
                             arr[i] = Int32.Parse(arrStr[i]);
                         }
                         CreateMatrixFromArry(arr);
-                        print();
+                       
                     }
                     else
                     {

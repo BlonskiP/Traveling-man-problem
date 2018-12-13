@@ -71,13 +71,13 @@ namespace Traveling_salesman_problem
         {
             _matrix = new AdjacencyMatrix(verticles);
             _matrix.GenerateRandomMatrix();
-            _matrix.print();
+           // _matrix.print();
         }
         private static void CreateTestMatrix(int verticles)
         {
             _matrix = new AdjacencyMatrix(verticles);
             _matrix.setTestMatrix();
-            _matrix.print();
+          //  _matrix.print();
         }
 
         public static void RunBruteForce()
@@ -196,7 +196,7 @@ namespace Traveling_salesman_problem
             SimulatedAnnealing ann = new SimulatedAnnealing(matrix);
             excel = new ExcelManager("pomiary");
             excel.createNewFile();
-           
+            Console.WriteLine("frv4 ver");
             #region
 
             for (int i = 1; i < 4; i++)
@@ -214,9 +214,10 @@ namespace Traveling_salesman_problem
                 float final = result / 10;
                 excel.changeCell(2, i + 2, final.ToString());
             }
-           
+
 
             // ftv170 ver
+            Console.WriteLine("frv170 ver");
             file = root + "\\ftv170.xml";
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
@@ -238,9 +239,10 @@ namespace Traveling_salesman_problem
                 float final = result / 10;
                 excel.changeCell(3, i + 2, final.ToString());
             }
-            
+
 
             // rbg403 ver
+            Console.WriteLine("rbg403 or2 ver");
             file = root + "\\rbg403.xml";
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
@@ -266,6 +268,7 @@ namespace Traveling_salesman_problem
 
             ///////////////////////3or////////////////////////////
             file = root + "\\ftv47.xml";
+            Console.WriteLine("ftv47 3or ver");
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
@@ -286,6 +289,7 @@ namespace Traveling_salesman_problem
 
             // ftv170 ver
             file = root + "\\ftv170.xml";
+            Console.WriteLine("ftv170 3or ver");
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
@@ -310,6 +314,7 @@ namespace Traveling_salesman_problem
 
             // rbg403 ver
             file = root + "\\rbg403.xml";
+            Console.WriteLine("rbg403 3or ver");
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
@@ -332,6 +337,8 @@ namespace Traveling_salesman_problem
             }
 
             ///// switch1//////////////////////////
+            ///
+            Console.WriteLine("rbg403 switch1 ver");
             file = root + "\\ftv47.xml";
             for (int i = 1; i < 4; i++)
             {
@@ -348,9 +355,10 @@ namespace Traveling_salesman_problem
                 float final = result / 10;
                 excel.changeCell(8, i + 2, final.ToString());
             }
-            
+
 
             // ftv170 ver
+            Console.WriteLine("ftv170 switch1 ver");
             file = root + "\\ftv170.xml";
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
@@ -375,6 +383,7 @@ namespace Traveling_salesman_problem
 
 
             // rbg403 ver
+            Console.WriteLine("rbg403 switch1 ver");
             file = root + "\\rbg403.xml";
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
@@ -401,6 +410,7 @@ namespace Traveling_salesman_problem
             ////////////////// NO DIVERSIFICATION ////////////////
             ///
             file = root + "\\ftv47.xml";
+            Console.WriteLine("ftv47 or2 no");
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             for (int i = 1; i < 4; i++)
@@ -422,6 +432,7 @@ namespace Traveling_salesman_problem
 
             // ftv170 no
             file = root + "\\ftv170.xml";
+            Console.WriteLine("ftv170 or2 no");
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
@@ -446,6 +457,7 @@ namespace Traveling_salesman_problem
 
             // rbg403 ver
             file = root + "\\rbg403.xml";
+            Console.WriteLine("rbg403 or2 no");
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             tabu = new TabuSearch(matrix, 10000, 3);
@@ -470,6 +482,7 @@ namespace Traveling_salesman_problem
 
             ///////////////////////3or////////////////////////////
             file = root + "\\ftv47.xml";
+            Console.WriteLine("ftv47 or3 no");
             for (int i = 1; i < 4; i++)
             {
                 float result = 0;
@@ -485,9 +498,10 @@ namespace Traveling_salesman_problem
                 float final = result / 10;
                 excel.changeCell(14, i + 2, final.ToString());
             }
-          
+
 
             // ftv170 ver
+            Console.WriteLine("ftv170 or3 no");
             file = root + "\\ftv170.xml";
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
@@ -512,6 +526,7 @@ namespace Traveling_salesman_problem
 
 
             // rbg403 ver
+            Console.WriteLine("rbg403 or3 no");
             file = root + "\\rbg403.xml";
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
@@ -551,9 +566,10 @@ namespace Traveling_salesman_problem
                 float final = result / 10;
                 excel.changeCell(17, i + 2, final.ToString());
             }
-          
+
 
             // ftv170 ver
+            Console.WriteLine("ftv170 switch1 no");
             file = root + "\\ftv170.xml";
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
@@ -578,6 +594,7 @@ namespace Traveling_salesman_problem
 
 
             // rbg403 ver
+            Console.WriteLine("rbg403 switch1 no");
             file = root + "\\rbg403.xml";
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
@@ -601,6 +618,7 @@ namespace Traveling_salesman_problem
             }
             #endregion
             #region
+            Console.WriteLine("ftv47 sa 0.9996");
             file = root + "\\ftv47.xml";
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
@@ -621,6 +639,7 @@ namespace Traveling_salesman_problem
             }
 
             file = root + "\\ftv170.xml";
+            Console.WriteLine("ftv170 sa 0.9996");
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             for (int i = 1; i < 4; i++)
@@ -640,6 +659,7 @@ namespace Traveling_salesman_problem
             }
 
             file = root + "\\rbg403.xml";
+            Console.WriteLine("rbg403 sa 0.9996");
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             for (int i = 1; i < 4; i++)
@@ -660,6 +680,7 @@ namespace Traveling_salesman_problem
             #endregion
             #region 0.9997
             file = root + "\\ftv47.xml";
+            Console.WriteLine("ftv47 sa 0.9997");
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             for (int i = 1; i < 4; i++)
@@ -679,6 +700,7 @@ namespace Traveling_salesman_problem
             }
 
             file = root + "\\ftv170.xml";
+            Console.WriteLine("ftv170 sa 0.9997");
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             for (int i = 1; i < 4; i++)
@@ -698,6 +720,7 @@ namespace Traveling_salesman_problem
             }
 
             file = root + "\\rbg403.xml";
+            Console.WriteLine("rgb403 sa 0.9997");
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             for (int i = 1; i < 4; i++)
@@ -718,6 +741,7 @@ namespace Traveling_salesman_problem
             #endregion
             #region 0.9997
             file = root + "\\ftv47.xml";
+            Console.WriteLine("ftv47 sa 0.9998");
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             for (int i = 1; i < 4; i++)
@@ -738,6 +762,7 @@ namespace Traveling_salesman_problem
 
             file = root + "\\ftv170.xml";
             tspFile = XDocument.Load(file);
+            Console.WriteLine("ftv170 sa 0.9998");
             matrix = new AdjacencyMatrix(tspFile);
             for (int i = 1; i < 4; i++)
             {
@@ -756,6 +781,7 @@ namespace Traveling_salesman_problem
             }
 
             file = root + "\\rbg403.xml";
+            Console.WriteLine("rbg403 sa 0.9998");
             tspFile = XDocument.Load(file);
             matrix = new AdjacencyMatrix(tspFile);
             for (int i = 1; i < 4; i++)
