@@ -196,7 +196,7 @@ namespace Traveling_salesman_problem
             SimulatedAnnealing ann = new SimulatedAnnealing(matrix);
             excel = new ExcelManager("pomiary");
             excel.createNewFile();
-            excel.close();
+           
             #region
 
             for (int i = 1; i < 4; i++)
@@ -214,7 +214,7 @@ namespace Traveling_salesman_problem
                 float final = result / 10;
                 excel.changeCell(2, i + 2, final.ToString());
             }
-            excel.close();
+           
 
             // ftv170 ver
             file = root + "\\ftv170.xml";
@@ -281,7 +281,8 @@ namespace Traveling_salesman_problem
                 float final = result / 10;
                 excel.changeCell(5, i + 2, final.ToString());
             }
-            excel.close();
+           
+
 
             // ftv170 ver
             file = root + "\\ftv170.xml";
@@ -347,7 +348,7 @@ namespace Traveling_salesman_problem
                 float final = result / 10;
                 excel.changeCell(8, i + 2, final.ToString());
             }
-            excel.close();
+            
 
             // ftv170 ver
             file = root + "\\ftv170.xml";
@@ -417,7 +418,7 @@ namespace Traveling_salesman_problem
                 float final = result / 10;
                 excel.changeCell(11, i + 2, final.ToString());
             }
-            excel.close();
+           
 
             // ftv170 no
             file = root + "\\ftv170.xml";
@@ -484,7 +485,7 @@ namespace Traveling_salesman_problem
                 float final = result / 10;
                 excel.changeCell(14, i + 2, final.ToString());
             }
-            excel.close();
+          
 
             // ftv170 ver
             file = root + "\\ftv170.xml";
@@ -550,7 +551,7 @@ namespace Traveling_salesman_problem
                 float final = result / 10;
                 excel.changeCell(17, i + 2, final.ToString());
             }
-            excel.close();
+          
 
             // ftv170 ver
             file = root + "\\ftv170.xml";
@@ -772,6 +773,7 @@ namespace Traveling_salesman_problem
                 float final = result / 10;
                 excel.changeCell(28, i + 2, final.ToString());
             }
+            excel.close();
             #endregion
         }
 
