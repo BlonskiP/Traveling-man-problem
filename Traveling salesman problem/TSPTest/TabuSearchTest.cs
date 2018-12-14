@@ -15,14 +15,15 @@ namespace TSPTest
         [TestMethod]
         public void TabuTest1()
         {
-            file = root + "\\ftv170.xml";
+            file = root + "\\brazil58.xml";
 
             XDocument tspFile = XDocument.Load(file);
             AdjacencyMatrix testMatrix = new AdjacencyMatrix(tspFile);
             TabuSearch test = new TabuSearch(testMatrix , 1000, 3);
             test.diversificationState = true;
+            test.neigState = "2or";
             test.Solve();
-            float lowestKnown = 2020;
+            float lowestKnown = 25395;
             float Result1= test.lowestCost;
             float errRat1 = (Result1- lowestKnown) / lowestKnown;
             test = new TabuSearch(testMatrix, 2000, 3);
@@ -32,7 +33,12 @@ namespace TSPTest
             float Result2 = test.lowestCost;
             float errRat2 = (Result2 - lowestKnown) / lowestKnown;
 
-
+            test = new TabuSearch(testMatrix, 2000, 3);
+            test.diversificationState = true;
+            test.neigState = "1switch";
+            test.Solve();
+            float Result3 = test.lowestCost;
+            float errRat3 = (Result3 - lowestKnown) / lowestKnown;
 
 
 

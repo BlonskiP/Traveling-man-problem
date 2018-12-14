@@ -92,7 +92,8 @@ namespace Traveling_salesman_problem
         private List<int> findBestNeig2or(List<int> curr)
         {
             List<int> neig = new List<int>(curr);
-            List<List<int>> potencialNeig = new List<List<int>>();
+           
+            List<int> bestSolution = new List<int>(curr);
             int verticleA;
             int verticleB;
             float bestScore = _matrix.countCost(curr);
@@ -112,8 +113,9 @@ namespace Traveling_salesman_problem
                         if(currScore<bestScore)
                         {
                             bestScore = currScore;
-                            potencialNeig.Add(neig);
-                            
+                           
+                            bestSolution = new List<int>(neig);
+
                         }
                         neig = new List<int>(curr);
 
@@ -124,25 +126,18 @@ namespace Traveling_salesman_problem
                
             }
 
-            foreach(var neigbour in potencialNeig)
-            {
-                float tempCost = _matrix.countCost(neigbour);
-                if(tempCost < bestScore)
-                {
-                    bestScore = tempCost;
-                    neig = new List<int>(neigbour);
-                }
-            }
-
-            createTaboMove(neig,curr);
-
-                    return neig;
+          
+           
+            createTaboMove(bestSolution,curr);
+           
+            return bestSolution;
         }
         private List<int> findBestNeig3or(List<int> curr)
         {
 
             List<int> neig = new List<int>(curr);
-            List<List<int>> potencialNeig = new List<List<int>>();
+            
+            List<int> bestSolution = new List<int>(curr);
             int verticleA;
             int verticleB;
             int verticleC;
@@ -168,8 +163,8 @@ namespace Traveling_salesman_problem
                             currScore = _matrix.countCost(neig);
                             if (currScore < bestScore)
                             {
-
-                                potencialNeig.Add(neig);
+                                bestSolution = new List<int>(neig);
+                                currScore = bestScore;
 
                             }
                             neig = new List<int>(curr);
@@ -181,26 +176,18 @@ namespace Traveling_salesman_problem
 
 
             }
-            foreach (var neigbour in potencialNeig)
-            {
-                float tempCost = _matrix.countCost(neigbour);
-                if (tempCost < bestScore)
-                {
-                    bestScore = tempCost;
-                    neig = new List<int>(neigbour);
-                }
-            }
+       
 
-            createTaboMove(neig, curr);
+            createTaboMove(bestSolution, curr);
 
-            return neig;
+            return bestSolution;
         }
 
         private List<int> findBestNeig1switch(List<int> curr)
         {
             Random rnd = new Random();
             List<int> neig = new List<int>(curr);
-            List<List<int>> potencialNeig = new List<List<int>>();
+            List<int> bestSolution = new List<int>(curr);
             int verticleA = rnd.Next(1, neig.Count-1);
             float bestScore = _matrix.countCost(curr);
             float currScore = bestScore;
@@ -215,7 +202,7 @@ namespace Traveling_salesman_problem
                     if(currScore<bestScore)
                     {
                         bestScore = currScore;
-                        potencialNeig.Add(neig);
+                        bestSolution = new List<int>(neig);
                     }
                     neig = new List<int>(curr);
                     neig.RemoveAt(neig.IndexOf(verticleA));
@@ -226,19 +213,10 @@ namespace Traveling_salesman_problem
 
 
 
-            foreach (var neigbour in potencialNeig)
-            {
-                float tempCost = _matrix.countCost(neigbour);
-                if (tempCost < bestScore)
-                {
-                    bestScore = tempCost;
-                    neig = new List<int>(neigbour);
-                }
-            }
+            
+            createTaboMove(bestSolution, curr);
 
-            createTaboMove(neig, curr);
-
-            return neig;
+            return bestSolution;
         }
 
         private void createTaboMove(List<int> neig, List<int> curr)
@@ -290,7 +268,7 @@ namespace Traveling_salesman_problem
         } 
         private List<int> FindBestGreedySolution()
         {
-            _matrix.print();
+          
             List<int> bestLocalSolution = new List<int>();
             bestLocalSolution.Add(0);
             for(int i=0; i<verticles;i++)
@@ -341,7 +319,7 @@ namespace Traveling_salesman_problem
                         break;
                     }
             }
-
+           
             return best;
         }
 

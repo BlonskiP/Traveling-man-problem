@@ -60,15 +60,15 @@ namespace Traveling_salesman_problem
             // y x 
            
             workSheet.Cells[2, 1] = "nazwa pliku";
-            workSheet.Cells[3, 1] = "1k";
-            workSheet.Cells[4, 1] = "2k";
-            workSheet.Cells[5, 1] = "3k";
+            workSheet.Cells[3, 1] = "20";
+            workSheet.Cells[4, 1] = "40";
+            workSheet.Cells[5, 1] = "60";
            
             for(int i=2;i<33;i+=3)
             {
                 workSheet.Cells[2, i] = " ftv47.xml";
-                workSheet.Cells[2, i + 1] = "ftv170.xml";
-                workSheet.Cells[2, i + 2] = "rbg403.xml";
+                workSheet.Cells[2, i + 1] = "bays29.xml";
+                workSheet.Cells[2, i + 2] = "ftv170.xml.xml";
             }
            
            

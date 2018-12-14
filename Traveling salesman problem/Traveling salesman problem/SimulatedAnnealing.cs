@@ -45,35 +45,17 @@ namespace Traveling_salesman_problem
             min_temperature = min;
             max_iterations = iterations;
         }
-        private float getDistance(int verticleA, int verticleB)
-        {
-            float distance = 0;
-            distance = costMatrix.fMatrix[verticleA, verticleB];
-            return distance;
-        }
-        private float calculateTourCost(tour path)
-        {
-            float tourCost = 0;
-            for(int i=1;i<path.route.Count();i++)
-            {
-                tourCost += getDistance(path.route[i - 1], path.route[i]);
-            }
-            tourCost += getDistance(path.route.Count - 1, path.route[0]);
-            return tourCost;
-        }
+        
 
         public float Calculate()
         {
             float temperature = max_temperature;
             tour current = new tour();
             tour next;
-            current.route = new List<int>();
+            current.route = FindBestGreedySolution();
             // Create random route
-            for(int i=0; i<verticles;i++)
-            {
-                current.route.Add(i);
-            }
-            current.fitness = calculateTourCost(current);
+            
+            current.fitness = costMatrix.countCost(current.route);
             bestResult = current.fitness;
             int iteration = 0;
             //iterations
@@ -97,7 +79,7 @@ namespace Traveling_salesman_problem
                 } while (verticleA == verticleB);
 
                 Swap<int>(next.route, verticleA, verticleB);
-                next.fitness = calculateTourCost(next);
+                next.fitness = costMatrix.countCost(next.route);
 
                 
                 if(next.fitness<current.fitness)
@@ -138,6 +120,31 @@ namespace Traveling_salesman_problem
             T tmp = list[indexA];
             list[indexA] = list[indexB];
             list[indexB] = tmp;
+        }
+        private List<int> FindBestGreedySolution()
+        {
+
+            List<int> bestLocalSolution = new List<int>();
+            bestLocalSolution.Add(0);
+            for (int i = 0; i < verticles; i++)
+            {
+                float lowestCost = float.MaxValue;
+                int potencialVerticle = 0;
+                for (int k = 0; k < verticles; k++)
+                {
+                    if (i != k && !bestLocalSolution.Contains(k))
+                        if (costMatrix.fMatrix[i, k] < lowestCost)
+                        {
+                            potencialVerticle = k;
+                            lowestCost = costMatrix.fMatrix[i, k];
+                        }
+                }
+                bestLocalSolution.Add(potencialVerticle);
+            }
+
+
+
+            return bestLocalSolution;
         }
     }
 }

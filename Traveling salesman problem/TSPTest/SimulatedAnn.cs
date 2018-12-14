@@ -45,7 +45,7 @@ namespace TSPTest
 
         public float annTest(float cooling, AdjacencyMatrix testMatrix) {
             SimulatedAnnealing test = new SimulatedAnnealing(testMatrix);
-            test.SetTemperature(10000, cooling, (float)0.1, 50000);
+            test.SetTemperature(10000, cooling, (float)0.1, 5000);
             float results = 0;
             for (int i = 0; i < 1000; i++)
             {
