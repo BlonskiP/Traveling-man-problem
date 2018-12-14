@@ -71,7 +71,7 @@ namespace Traveling_salesman_problem
                 tabuMap.decreseTabuLife();
             }
 
-            lowestCost = _matrix.countCost(bestSolution);
+           lowestCost = _matrix.countCost(bestSolution);
 
         }
         private List<int> randomList()

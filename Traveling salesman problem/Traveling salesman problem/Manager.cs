@@ -196,424 +196,424 @@ namespace Traveling_salesman_problem
             SimulatedAnnealing ann = new SimulatedAnnealing(matrix);
             excel = new ExcelManager("pomiary");
             excel.createNewFile();
-            Console.WriteLine("frv4 ver 2or");
-            #region
+            //Console.WriteLine("frv4 ver 2or");
+            //#region
 
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = true;
-                    tabu.neigState = "2or";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = true;
+            //        tabu.neigState = "2or";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(2, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(2, i + 2, final.ToString());
+            //}
 
 
-            // bays29 ver
-            Console.WriteLine("bays29 2or ver");
-            file = root + "\\bays29.xml";
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            tabu = new TabuSearch(matrix, 10000, 3);
+            //// bays29 ver
+            //Console.WriteLine("bays29 2or ver");
+            //file = root + "\\bays29.xml";
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //tabu = new TabuSearch(matrix, 10000, 3);
            
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = true;
-                    tabu.neigState = "2or";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = true;
+            //        tabu.neigState = "2or";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(3, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(3, i + 2, final.ToString());
+            //}
 
 
-            // ftv170 ver
-            Console.WriteLine("ftv170 or2 ver");
-            file = root + "\\ftv170.xml";
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            tabu = new TabuSearch(matrix, 10000, 3);
+            //// ftv170 ver
+            //Console.WriteLine("ftv170 or2 ver");
+            //file = root + "\\ftv170.xml";
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //tabu = new TabuSearch(matrix, 10000, 3);
             
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = true;
-                    tabu.neigState = "2or";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = true;
+            //        tabu.neigState = "2or";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(4, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(4, i + 2, final.ToString());
+            //}
 
 
-            ///////////////////////3or////////////////////////////
-            file = root + "\\ftv47.xml";
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            Console.WriteLine("ftv47 3or ver");
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = true;
-                    tabu.neigState = "3or";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            /////////////////////////3or////////////////////////////
+            //file = root + "\\ftv47.xml";
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //Console.WriteLine("ftv47 3or ver");
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = true;
+            //        tabu.neigState = "3or";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(5, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(5, i + 2, final.ToString());
+            //}
            
 
 
-            // bays29 ver
-            file = root + "\\bays29.xml";
-            Console.WriteLine("bays29 3or ver");
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            tabu = new TabuSearch(matrix, 10000, 3);
+            //// bays29 ver
+            //file = root + "\\bays29.xml";
+            //Console.WriteLine("bays29 3or ver");
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //tabu = new TabuSearch(matrix, 10000, 3);
             
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = true;
-                    tabu.neigState = "3or";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = true;
+            //        tabu.neigState = "3or";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(6, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(6, i + 2, final.ToString());
+            //}
 
 
-            // ftv170 ver
-            file = root + "\\ftv170.xml";
-            Console.WriteLine("ftv170 3or ver");
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            tabu = new TabuSearch(matrix, 10000, 3);
+            //// ftv170 ver
+            //file = root + "\\ftv170.xml";
+            //Console.WriteLine("ftv170 3or ver");
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //tabu = new TabuSearch(matrix, 10000, 3);
            
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = true;
-                    tabu.neigState = "3or";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = true;
+            //        tabu.neigState = "3or";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(7, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(7, i + 2, final.ToString());
+            //}
 
-            ///// switch1//////////////////////////
-            ///
-            Console.WriteLine("ftv47 switch1 ver");
-            file = root + "\\ftv47.xml";
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = true;
-                    tabu.neigState = "1switch";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            /////// switch1//////////////////////////
+            /////
+            //Console.WriteLine("ftv47 switch1 ver");
+            //file = root + "\\ftv47.xml";
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = true;
+            //        tabu.neigState = "1switch";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(8, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(8, i + 2, final.ToString());
+            //}
 
 
-            // bays29 ver
-            Console.WriteLine("bays29 switch1 ver");
-            file = root + "\\bays29.xml";
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            tabu = new TabuSearch(matrix, 10000, 3);
+            //// bays29 ver
+            //Console.WriteLine("bays29 switch1 ver");
+            //file = root + "\\bays29.xml";
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //tabu = new TabuSearch(matrix, 10000, 3);
             
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = true;
-                    tabu.neigState = "1switch";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = true;
+            //        tabu.neigState = "1switch";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(9, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(9, i + 2, final.ToString());
+            //}
 
 
-            // ftv170 ver
-            Console.WriteLine("ftv170 switch1 ver");
-            file = root + "\\ftv170.xml";
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            tabu = new TabuSearch(matrix, 10000, 3);
+            //// ftv170 ver
+            //Console.WriteLine("ftv170 switch1 ver");
+            //file = root + "\\ftv170.xml";
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //tabu = new TabuSearch(matrix, 10000, 3);
           
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = true;
-                    tabu.neigState = "1switch";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = true;
+            //        tabu.neigState = "1switch";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(10, i + 2, final.ToString());
-            }
-            #endregion
-            #region
-            ////////////////// NO DIVERSIFICATION ////////////////
-            ///
-            file = root + "\\ftv47.xml";
-            Console.WriteLine("ftv47 or2 no");
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = false;
-                    tabu.neigState = "2or";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //    }
+            //    float final = result;
+            //    excel.changeCell(10, i + 2, final.ToString());
+            //}
+            //#endregion
+            //#region
+            //////////////////// NO DIVERSIFICATION ////////////////
+            /////
+            //file = root + "\\ftv47.xml";
+            //Console.WriteLine("ftv47 or2 no");
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = false;
+            //        tabu.neigState = "2or";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(11, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(11, i + 2, final.ToString());
+            //}
            
 
-            // bays29 no
-            file = root + "\\bays29.xml";
-            Console.WriteLine("bays29 or2 no");
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            tabu = new TabuSearch(matrix, 10000, 3);
+            //// bays29 no
+            //file = root + "\\bays29.xml";
+            //Console.WriteLine("bays29 or2 no");
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //tabu = new TabuSearch(matrix, 10000, 3);
           
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = false;
-                    tabu.neigState = "2or";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = false;
+            //        tabu.neigState = "2or";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(12, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(12, i + 2, final.ToString());
+            //}
 
 
-            // ftv170 ver
-            file = root + "\\ftv170.xml";
+            //// ftv170 ver
+            //file = root + "\\ftv170.xml";
           
-            Console.WriteLine("ftv170 or2 no");
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            tabu = new TabuSearch(matrix, 10000, 3);
+            //Console.WriteLine("ftv170 or2 no");
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //tabu = new TabuSearch(matrix, 10000, 3);
            
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = false;
-                    tabu.neigState = "2or";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = false;
+            //        tabu.neigState = "2or";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(13, i + 2, final.ToString());
-            }
-
-
-            ///////////////////////3or////////////////////////////
-            file = root + "\\ftv47.xml";
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            Console.WriteLine("ftv47 or3 no");
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = false;
-                    tabu.neigState = "3or";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
-
-                }
-                float final = result;
-                excel.changeCell(14, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(13, i + 2, final.ToString());
+            //}
 
 
-            // bays29 ver
-            Console.WriteLine("bays29 or3 no");
-            file = root + "\\bays29.xml";
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            tabu = new TabuSearch(matrix, 10000, 3);
+            /////////////////////////3or////////////////////////////
+            //file = root + "\\ftv47.xml";
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //Console.WriteLine("ftv47 or3 no");
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = false;
+            //        tabu.neigState = "3or";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
+
+            //    }
+            //    float final = result;
+            //    excel.changeCell(14, i + 2, final.ToString());
+            //}
+
+
+            //// bays29 ver
+            //Console.WriteLine("bays29 or3 no");
+            //file = root + "\\bays29.xml";
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //tabu = new TabuSearch(matrix, 10000, 3);
            
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = false;
-                    tabu.neigState = "3or";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = false;
+            //        tabu.neigState = "3or";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(15, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(15, i + 2, final.ToString());
+            //}
 
 
-            // ftv170 ver
-            Console.WriteLine("ftv170 or3 no");
-            file = root + "\\ftv170.xml";
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            tabu = new TabuSearch(matrix, 10000, 3);
+            //// ftv170 ver
+            //Console.WriteLine("ftv170 or3 no");
+            //file = root + "\\ftv170.xml";
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //tabu = new TabuSearch(matrix, 10000, 3);
            
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = false;
-                    tabu.neigState = "3or";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = false;
+            //        tabu.neigState = "3or";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(16, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(16, i + 2, final.ToString());
+            //}
 
-            ///// switch1//////////////////////////
-            file = root + "\\ftv47.xml";
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = false;
-                    tabu.neigState = "1switch";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            /////// switch1//////////////////////////
+            //file = root + "\\ftv47.xml";
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = false;
+            //        tabu.neigState = "1switch";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(17, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(17, i + 2, final.ToString());
+            //}
 
 
-            // bays29 ver
-            Console.WriteLine("bays29 switch1 no");
-            file = root + "\\bays29.xml";
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            tabu = new TabuSearch(matrix, 10000, 3);
+            //// bays29 ver
+            //Console.WriteLine("bays29 switch1 no");
+            //file = root + "\\bays29.xml";
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //tabu = new TabuSearch(matrix, 10000, 3);
            
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState = false;
-                    tabu.neigState = "1switch";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState = false;
+            //        tabu.neigState = "1switch";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(18, i + 2, final.ToString());
-            }
+            //    }
+            //    float final = result;
+            //    excel.changeCell(18, i + 2, final.ToString());
+            //}
 
 
-            // ftv170 ver
-            Console.WriteLine("ftv170 switch1 no");
-            file = root + "\\ftv170.xml";
-            tspFile = XDocument.Load(file);
-            matrix = new AdjacencyMatrix(tspFile);
-            tabu = new TabuSearch(matrix, 10000, 3);
+            //// ftv170 ver
+            //Console.WriteLine("ftv170 switch1 no");
+            //file = root + "\\ftv170.xml";
+            //tspFile = XDocument.Load(file);
+            //matrix = new AdjacencyMatrix(tspFile);
+            //tabu = new TabuSearch(matrix, 10000, 3);
            
-            for (int i = 1; i < 4; i++)
-            {
-                float result = 0;
-                for (int k = 0; k < 1; k++)
-                {
-                    tabu = new TabuSearch(matrix, 20 * i, 3);
-                    tabu.diversificationState =false;
-                    tabu.neigState = "1switch";
-                    tabu.Solve();
-                    result += tabu.lowestCost;
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    float result = 0;
+            //    for (int k = 0; k < 1; k++)
+            //    {
+            //        tabu = new TabuSearch(matrix, 20 * i, 3);
+            //        tabu.diversificationState =false;
+            //        tabu.neigState = "1switch";
+            //        tabu.Solve();
+            //        result += tabu.lowestCost;
 
-                }
-                float final = result;
-                excel.changeCell(19, i + 2, final.ToString());
-            }
-            #endregion
+            //    }
+            //    float final = result;
+            //    excel.changeCell(19, i + 2, final.ToString());
+            //}
+            //#endregion
             #region
             Console.WriteLine("ftv47 sa 0.9996");
             file = root + "\\ftv47.xml";
@@ -626,7 +626,7 @@ namespace Traveling_salesman_problem
                 {
                     ann = new SimulatedAnnealing(matrix);
 
-                    ann.SetTemperature(10, (float)0.9996, (float)0.1, 20 * i);
+                    ann.SetTemperature(10, (float)0.9996, (float)0.1, 2000 * i);
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -646,7 +646,7 @@ namespace Traveling_salesman_problem
                 {
                     ann = new SimulatedAnnealing(matrix);
 
-                    ann.SetTemperature(10, (float)0.9996, (float)0.1, 20 * i);
+                    ann.SetTemperature(10, (float)0.9996, (float)0.1, 2000 * i);
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -666,7 +666,7 @@ namespace Traveling_salesman_problem
                 {
                     ann = new SimulatedAnnealing(matrix);
 
-                    ann.SetTemperature(10, (float)0.9996, (float)0.1, 20 * i);
+                    ann.SetTemperature(10, (float)0.9996, (float)0.1, 2000 * i);
                     tabu.Solve();
                     result += tabu.lowestCost;
 
@@ -819,10 +819,7 @@ namespace Traveling_salesman_problem
             anneling.SetTemperature(temperature, cooling, mintemp, iterations);
             anneling.Calculate();
             timeCounter.Stop();
-            foreach (var element in anneling.result)
-            {
-                path.Add(element);
-            }
+            
 
 
 
